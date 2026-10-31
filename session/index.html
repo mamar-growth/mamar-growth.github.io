@@ -239,7 +239,9 @@ footer{padding-block:30px;display:flex;justify-content:space-between;gap:12px;fl
 
   <section class="final" aria-labelledby="h-final">
     <h2 id="h-final">قرارك الجاي يبدأ بمكالمة 20 دقيقة.</h2>
-    <div class="ctas"><a class="btn btn-primary" href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">احجز مكالمة اكتشاف مجانية</a></div>
+    <p class="lead" style="margin:8px auto 18px">اختر اليوم والساعة من هنا مباشرة.</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/mamar-growth/20?hide_gdpr_banner=1&amp;primary_color=cc40fa" style="min-width:300px;height:720px;border-radius:16px;overflow:hidden;background:#fbf5fc"></div>
+    <p class="note">ما ظهر لك التقويم؟ <a href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">افتح صفحة الحجز</a></p>
   </section>
 
   <footer>
@@ -258,5 +260,17 @@ btn.addEventListener("click", () => {
 });
 </script>
 
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function(){
+  var URL_BOOK = "https://calendly.com/mamar-growth/20?hide_gdpr_banner=1&primary_color=cc40fa";
+  document.querySelectorAll('a[href^="https://calendly.com/mamar-growth/20"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      if (window.Calendly && Calendly.initPopupWidget) { e.preventDefault(); Calendly.initPopupWidget({url: URL_BOOK}); }
+    });
+  });
+})();
+</script>
 </body>
 </html>

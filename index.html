@@ -84,5 +84,17 @@ footer a{color:var(--soft)}
   <footer><a href="https://instagram.com/mamar.growth" target="_blank" rel="noopener" dir="ltr">@mamar.growth</a></footer>
 </main>
 
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function(){
+  var URL_BOOK = "https://calendly.com/mamar-growth/20?hide_gdpr_banner=1&primary_color=cc40fa";
+  document.querySelectorAll('a[href^="https://calendly.com/mamar-growth/20"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      if (window.Calendly && Calendly.initPopupWidget) { e.preventDefault(); Calendly.initPopupWidget({url: URL_BOOK}); }
+    });
+  });
+})();
+</script>
 </body>
 </html>
