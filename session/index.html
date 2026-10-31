@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جلسة المفكر الاستراتيجي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="جلسة 90 دقيقة مع معمّر: نطلّع مشروعك من المنافسة بأدوات المحيط الأزرق ونكتب قصة براند تبيع.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap">
+<style>
+/* Layout: single dark column, right-aligned Arabic, a strategy-canvas chart as the hero visual */
+:root{
+  --ink:#0A060D; --panel:#140C1B; --panel-2:#1D1227; --line:#2B2139;
+  --white:#FBF5FC; --soft:#DCBCE8; --muted:#A894B3;
+  --accent:#CC40FA; --edge:#8D16EA; --deep:#6B18BE;
+  --f:"Cairo","Segoe UI",Tahoma,system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--white);font-family:var(--f);font-size:17px;line-height:1.8;direction:rtl;text-align:right;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:10px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:22px;border-bottom:1px solid var(--line);font-size:14px;color:var(--soft)}
+.top b{color:var(--white);font-weight:800;font-size:16px}
+.top .handle{direction:ltr;font-weight:600}
+section{padding-block:56px;border-bottom:1px solid var(--line)}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:900;line-height:1.35}
+h1{font-size:clamp(2rem,5.4vw,3.5rem)}
+h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:10px}
+h3{font-size:1.15rem;font-weight:800}
+.hl{color:var(--accent)}
+.lead{color:var(--soft);font-size:1.1rem;max-width:56ch;margin:18px 0 0}
+.eyebrow{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:800;margin-bottom:12px;display:block}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero>*{min-width:0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:12px 26px;border-radius:14px;font-family:var(--f);font-weight:800;font-size:1.05rem;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:var(--ink)}
+.btn-primary:hover{background:#d968fb}
+.btn-ghost{background:transparent;color:var(--white);border-color:var(--edge)}
+.btn-ghost:hover{background:var(--panel-2)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.canvas{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.canvas figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--soft);margin-top:6px}
+.legend i{display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-left:6px}
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.who>div{border-top:2px solid var(--edge);padding-top:14px;min-width:0}
+.who p{margin:6px 0 0;color:var(--soft);font-size:15px}
+.errc{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:26px}
+.errc>div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.errc .k{font-weight:900;font-size:1.25rem}
+.errc .en{direction:ltr;display:inline-block;font-size:12px;color:var(--muted);margin-right:8px;letter-spacing:.06em}
+.errc p{margin:6px 0 0;color:var(--soft);font-size:15px}
+.errc>div:nth-child(1) .k{color:#ff7aa8}.errc>div:nth-child(2) .k{color:#f3c36b}.errc>div:nth-child(3) .k{color:#6fe0c8}.errc>div:nth-child(4) .k{color:var(--accent)}
+.prices{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px;align-items:start}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;min-width:0}
+.price.feat{border-color:var(--edge);background:var(--panel-2)}
+.tag{display:inline-block;font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px;background:#2a1640;color:var(--soft)}
+.price.feat .tag{background:var(--deep);color:var(--white)}
+.amt{font-size:3rem;font-weight:900;line-height:1.1;margin-top:14px;font-variant-numeric:tabular-nums;direction:ltr;text-align:right}
+.alt{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.price ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px}
+.price li{display:flex;gap:10px;font-size:15px;color:var(--soft)}
+.price li::before{content:"";flex:0 0 8px;height:8px;margin-top:10px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.price .cond{font-size:13px;color:var(--muted);margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+.steps{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding-top:52px;min-width:0}
+.steps li::before{content:counter(s);position:absolute;top:0;right:0;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;background:var(--panel-2);border:1px solid var(--edge);color:var(--accent)}
+.steps p{margin:4px 0 0;color:var(--soft);font-size:15px}
+.pay{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+.payopt{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.payopt .btn{width:100%}
+.payopt p{margin:0;color:var(--soft);font-size:15px}
+.uid{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--ink);border:1px dashed var(--edge);border-radius:12px;padding:12px 16px}
+.uid-label{font-size:13px;color:var(--muted)}
+.uid code{font-size:1.4rem;font-weight:800;letter-spacing:.08em;color:var(--white);font-variant-numeric:tabular-nums;user-select:all}
+.after{margin-top:18px;background:#1a0f24;border:1px solid var(--deep);border-radius:14px;padding:16px 18px;font-size:15px;color:var(--soft)}
+.after b{color:var(--white)}
+details{border-bottom:1px solid var(--line);padding-block:14px}
+details:first-of-type{border-top:1px solid var(--line);margin-top:20px}
+summary{cursor:pointer;font-weight:800;font-size:1.05rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:left;color:var(--accent);font-weight:900}
+details[open] summary::after{content:"−"}
+details p{margin:8px 0 0;color:var(--soft);font-size:15px;max-width:65ch}
+footer{padding-block:30px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.final{text-align:center;border-bottom:0}
+.final .ctas{justify-content:center}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .who{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .prices,.pay,.errc{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  section{padding-block:40px}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span><b>معمّر</b> · Storytelling &amp; Branding</span>
+    <span class="handle">@mamar.growth</span>
+  </header>
+
+  <section class="hero" aria-labelledby="h-hero">
+    <div>
+      <span class="eyebrow">جلسة المفكر الاستراتيجي · 90 دقيقة</span>
+      <h1 id="h-hero">مشروعك سلسلة قرارات.<br><span class="hl">خلّنا نرسم قرارك الجاي.</span></h1>
+      <p class="lead">جلسة وحدة نطلّع فيها مشروعك من المنافسة على السعر بأدوات المحيط الأزرق، ونكتب لك قصة براند تبيع بدل ما تشرح.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">احجز مكالمة اكتشاف مجانية</a>
+        <a class="btn btn-ghost" href="#prices">شوف الأسعار</a>
+      </div>
+      <p class="note">المكالمة 20 دقيقة على Google Meet · السبت إلى الخميس، 4 العصر إلى 10 الليل بتوقيت مكة</p>
+    </div>
+    <figure class="canvas" style="margin:0">
+      <svg viewBox="-16 0 392 240" role="img" aria-labelledby="cv-t cv-d" style="width:100%;height:auto;display:block">
+        <title id="cv-t">لوحة الاستراتيجية</title>
+        <desc id="cv-d">مثال توضيحي: منحنى السوق متشابه، ومنحنى مشروعك بعد الجلسة يرتفع في عوامل وينخفض في أخرى</desc>
+        <g stroke="#2B2139" stroke-width="1">
+          <line x1="20" y1="40" x2="340" y2="40"/><line x1="20" y1="90" x2="340" y2="90"/><line x1="20" y1="140" x2="340" y2="140"/><line x1="20" y1="190" x2="340" y2="190"/>
+        </g>
+        <polyline fill="none" stroke="#A894B3" stroke-width="2.5" stroke-dasharray="5 5" points="340,70 276,80 212,75 148,85 84,80 20,90"/>
+        <polyline fill="none" stroke="#CC40FA" stroke-width="3.5" stroke-linejoin="round" points="340,175 276,185 212,60 148,30 84,45 20,150"/>
+        <g fill="#CC40FA"><circle cx="340" cy="175" r="5"/><circle cx="276" cy="185" r="5"/><circle cx="212" cy="60" r="5"/><circle cx="148" cy="30" r="5"/><circle cx="84" cy="45" r="5"/><circle cx="20" cy="150" r="5"/></g>
+        <g fill="#DCBCE8" font-family="Cairo, sans-serif" font-size="12" text-anchor="middle">
+          <text x="340" y="222">السعر</text><text x="276" y="222">الخصومات</text><text x="212" y="222">القصة</text><text x="148" y="222">الثقة</text><text x="84" y="222">التجربة</text><text x="20" y="222">الإعلانات</text>
+        </g>
+      </svg>
+      <div class="legend"><span><i style="background:#CC40FA"></i>مشروعك بعد الجلسة</span><span><i style="background:#A894B3"></i>منافسينك</span></div>
+      <figcaption>مثال توضيحي للوحة الاستراتيجية، مو أرقام عميل حقيقي.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="h-who">
+    <h2 id="h-who">لمين هذي الجلسة؟</h2>
+    <div class="who">
+      <div><h3>تفكر تبدأ مشروع</h3><p>عندك فكرة أو ثنتين، وتبي تعرف وين المكان اللي ما فيه زحمة قبل ما تصرف ريال.</p></div>
+      <div><h3>عندك مشروع وتشوفه صعب</h3><p>تنافس على السعر، والإعلانات تاكل الربح، وما تعرف وش تغيّر أول.</p></div>
+      <div><h3>مشروعك ماشي وتبي زاوية جديدة</h3><p>وصلت لسقف، وتبي قصة وموقع يخلونك خارج المقارنة.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-errc">
+    <h2 id="h-errc">وش نسوي في الـ90 دقيقة؟</h2>
+    <p class="lead" style="margin-top:6px">نرسم لوحة استراتيجية مشروعك، ونطبّق عليها أربع أسئلة من منهج المحيط الأزرق:</p>
+    <div class="errc">
+      <div><span class="k">امحُ</span><span class="en">ELIMINATE</span><p>وش تسويه أنت ومنافسينك، والعميل أصلًا ما يحتاجه؟</p></div>
+      <div><span class="k">قلّل</span><span class="en">REDUCE</span><p>وش تصرف عليه أكثر من اللازم؟</p></div>
+      <div><span class="k">ارفع</span><span class="en">RAISE</span><p>وش لازم تكون فيه أقوى من السوق بوضوح؟</p></div>
+      <div><span class="k">أنشئ</span><span class="en">CREATE</span><p>وش تقدر تقدّمه وما أحد غيرك يقدّمه؟</p></div>
+    </div>
+    <p class="lead">وبعدها نحوّل النتيجة لقصة براند: وش تقول، ولمين، وليش يصدّقونك.</p>
+  </section>
+
+  <section id="prices" aria-labelledby="h-prices">
+    <h2 id="h-prices">الأسعار</h2>
+    <div class="prices">
+      <article class="price">
+        <span class="tag">المؤسسون · لأول 3 عملاء</span>
+        <div class="amt">$150</div>
+        <div class="alt">150 USDT · تقريبًا 562.5 ر.س</div>
+        <ul>
+          <li>جلسة المفكر الاستراتيجي 90 دقيقة</li>
+          <li>لوحة استراتيجية مشروعك والأسئلة الأربعة أثناء الجلسة</li>
+        </ul>
+        <p class="cond">مقابل شهادتك بعد الجلسة، وموافقتك إننا نعرض تجربتك كدراسة حالة.</p>
+      </article>
+      <article class="price feat">
+        <span class="tag">العرض المتكامل</span>
+        <div class="amt">$350</div>
+        <div class="alt">350 USDT · تقريبًا 1312.5 ر.س</div>
+        <ul>
+          <li>جلسة المفكر الاستراتيجي 90 دقيقة</li>
+          <li>لوحة الاستراتيجية مكتوبة ومرسومة</li>
+          <li>جدول امحُ · قلّل · ارفع · أنشئ لمشروعك</li>
+          <li>قصة البراند مكتوبة جاهزة للاستخدام</li>
+          <li>خطة محتوى 30 يوم مبنية على القصة</li>
+          <li>جلسة متابعة 30 دقيقة بعد أسبوعين</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-steps">
+    <h2 id="h-steps">كيف نمشي؟</h2>
+    <ol class="steps">
+      <li><h3>مكالمة اكتشاف</h3><p>20 دقيقة مجانية نفهم فيها مشروعك. إذا الجلسة ما تناسبك أقولك بصراحة.</p></li>
+      <li><h3>الدفع</h3><p>عبر Binance Pay، أو طريقة بديلة نتفق عليها في المكالمة. وترسل لي رقم العملية.</p></li>
+      <li><h3>حجز الجلسة</h3><p>أرسل لك رابط خاص تختار منه موعد الـ90 دقيقة.</p></li>
+      <li><h3>الجلسة والتسليم</h3><p>نشتغل على مشروعك، وتستلم الملفات حسب الباقة.</p></li>
+    </ol>
+  </section>
+
+  <section id="pay" aria-labelledby="h-pay">
+    <h2 id="h-pay">الدفع</h2>
+    <p class="lead" style="margin-top:6px">ادفع بعد مكالمة الاكتشاف، لما نتفق على الباقة.</p>
+    <div class="pay">
+      <div class="payopt">
+        <h3>Binance Pay</h3>
+        <p>من تطبيق Binance: Pay ← Send ← أدخل الـUID تحت، والمبلغ بـUSDT.</p>
+        <div class="uid"><span class="uid-label">Binance UID</span><code id="uid" dir="ltr">40421062</code></div>
+        <button type="button" id="copy-uid" class="btn btn-primary">انسخ الـUID</button>
+      </div>
+      <div class="payopt">
+        <h3>ما عندك Binance؟</h3>
+        <p>عندي أكثر من طريقة بديلة، ونحدد الأنسب لك في مكالمة الاكتشاف.</p>
+        <a class="btn btn-ghost" href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">احجز المكالمة أولًا</a>
+      </div>
+    </div>
+    <div class="after"><b>بعد الدفع:</b> أرسل رقم العملية أو صورة الإيصال في رسائل إنستغرام <span dir="ltr">@mamar.growth</span>، وأرسل لك رابط حجز الجلسة مباشرة.</div>
+  </section>
+
+  <section aria-labelledby="h-faq">
+    <h2 id="h-faq">أسئلة سريعة</h2>
+    <details><summary>ما عندي Binance، أقدر أدفع؟</summary><p>إيه. عندي طرق دفع بديلة، ونحدد الأنسب لك في مكالمة الاكتشاف.</p></details>
+    <details><summary>وش الفرق بين المكالمة المجانية والجلسة؟</summary><p>المكالمة 20 دقيقة نتعرف فيها على مشروعك ونشوف إذا الجلسة تفيدك. الجلسة 90 دقيقة نشتغل فيها فعليًا على الاستراتيجية والقصة.</p></details>
+    <details><summary>الجلسة أونلاين؟</summary><p>إيه، على Google Meet، من السبت إلى الخميس بين 4 العصر و10 الليل بتوقيت مكة.</p></details>
+    <details><summary>ليش سعر المؤسسين أقل؟</summary><p>لأني أبي أول 3 قصص نجاح موثقة. تاخذ نفس الجلسة بسعر أقل، مقابل شهادتك ودراسة حالة عن تجربتك.</p></details>
+  </section>
+
+  <section class="final" aria-labelledby="h-final">
+    <h2 id="h-final">قرارك الجاي يبدأ بمكالمة 20 دقيقة.</h2>
+    <div class="ctas"><a class="btn btn-primary" href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">احجز مكالمة اكتشاف مجانية</a></div>
+  </section>
+
+  <footer>
+    <span>معمّر · Storytelling &amp; Branding</span>
+    <a href="https://instagram.com/mamar.growth" target="_blank" rel="noopener" dir="ltr">@mamar.growth</a>
+  </footer>
+</div>
+
+<script>
+const btn = document.getElementById("copy-uid");
+const uid = document.getElementById("uid");
+btn.addEventListener("click", () => {
+  const done = () => { btn.textContent = "اننسخ ✓"; setTimeout(() => btn.textContent = "انسخ الـUID", 2000); };
+  const select = () => { const r = document.createRange(); r.selectNodeContents(uid); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "محدّد، انسخه يدويًا"; };
+  try { navigator.clipboard.writeText(uid.textContent).then(done, select); } catch (e) { select(); }
+});
+</script>
+
+</body>
+</html>

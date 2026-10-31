@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>روابط معمّر</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="معمّر | Storytelling & Branding — احجز مكالمة مجانية، جلسة المفكر الاستراتيجي، وكتاب خطة 40 يوم.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap">
+<style>
+/* Layout: one narrow phone-first column of link cards, identity at top, decision line as the thesis */
+:root{
+  --ink:#0A060D; --panel:#140C1B; --panel-2:#1D1227; --line:#2B2139;
+  --white:#FBF5FC; --soft:#DCBCE8; --muted:#A894B3;
+  --accent:#CC40FA; --edge:#8D16EA; --deep:#6B18BE;
+  --f:"Cairo","Segoe UI",Tahoma,system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--f);direction:rtl;text-align:right;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:480px;margin:0 auto;padding-block:40px 28px;display:flex;flex-direction:column;gap:14px}
+.id{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:10px}
+.mark{width:76px;height:76px;border-radius:22px;background:var(--panel-2);border:1px solid var(--edge);display:grid;place-items:center;font-size:30px;font-weight:900;color:var(--accent)}
+h1{margin:6px 0 0;font-size:1.7rem;font-weight:900;line-height:1.3}
+.sub{font-size:14px;color:var(--soft);direction:ltr}
+.thesis{margin:10px 0 0;font-size:1.05rem;font-weight:800;color:var(--white);text-wrap:balance}
+.thesis span{color:var(--accent)}
+a.card{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px;transition:transform .15s ease,border-color .15s ease}
+a.card:hover{transform:translateY(-2px);border-color:var(--edge)}
+a.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+a.card.main{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+a.card.main .meta{color:#3a0b52}
+.txt{flex:1;min-width:0}
+.ttl{display:block;font-weight:900;font-size:1.08rem;line-height:1.4}
+.meta{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.ico{flex:0 0 44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--panel-2);border:1px solid var(--line)}
+a.card.main .ico{background:rgba(10,6,13,.14);border-color:rgba(10,6,13,.2)}
+.ico svg{width:22px;height:22px}
+.cover{flex:0 0 56px;height:84px;border-radius:8px;object-fit:cover;border:1px solid var(--line)}
+.arrow{flex:0 0 auto;font-size:1.2rem;opacity:.7}
+.label{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:800;margin:14px 4px 0}
+footer{text-align:center;font-size:12px;color:var(--muted);margin-top:18px}
+footer a{color:var(--soft)}
+@media (prefers-reduced-motion:reduce){a.card{transition:none}a.card:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<main>
+  <header class="id">
+    <div class="mark" aria-hidden="true">م</div>
+    <h1>معمّر</h1>
+    <div class="sub">Storytelling &amp; Branding · @mamar.growth</div>
+    <p class="thesis">الأعمال سلسلة قرارات، <span>والقرار الذكي يُتعلَّم.</span></p>
+  </header>
+
+  <a class="card main" href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
+    <span class="txt"><span class="ttl">احجز مكالمة اكتشاف مجانية</span><span class="meta">20 دقيقة · Google Meet</span></span>
+    <span class="arrow" aria-hidden="true">←</span>
+  </a>
+
+  <a class="card" href="session/">
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#CC40FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+    <span class="txt"><span class="ttl">جلسة المفكر الاستراتيجي</span><span class="meta">90 دقيقة · تبدأ من 150$</span></span>
+    <span class="arrow" aria-hidden="true">←</span>
+  </a>
+
+  <p class="label">مجاني</p>
+  <a class="card" href="book.pdf" target="_blank" rel="noopener">
+    <img class="cover" src="cover.jpg" alt="غلاف كتاب خطة 40 يوم" width="56" height="84">
+    <span class="txt"><span class="ttl">كتاب: خطة 40 يوم</span><span class="meta">دليل يومي لبناء حساب إنستغرام ينمو · PDF</span></span>
+    <span class="arrow" aria-hidden="true">←</span>
+  </a>
+
+  <footer><a href="https://instagram.com/mamar.growth" target="_blank" rel="noopener" dir="ltr">@mamar.growth</a></footer>
+</main>
+
+</body>
+</html>
