@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>باقة المفكر الاستراتيجي</title>
+<meta name="description" content="خريطة مشروعك في 24 ساعة بـ9$: لوحة الاستراتيجية، لوحة ERRC، قصة براندك، و3 نسخ بايو.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap">
+<style>
+:root{--ink:#0A060D;--panel:#140C1B;--panel-2:#1D1227;--line:#2B2139;--white:#FBF5FC;--soft:#DCBCE8;--muted:#A894B3;--accent:#CC40FA;--edge:#8D16EA;--deep:#6B18BE;--danger:#ff7aa8;--f:"Cairo","Segoe UI",Tahoma,system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--f);font-size:17px;line-height:1.8;direction:rtl;text-align:right;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto}
+a{color:inherit}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:22px;border-bottom:1px solid var(--line);font-size:14px;color:var(--soft)}
+.top b{color:var(--white);font-weight:800;font-size:16px}
+.top a{text-decoration:none;direction:ltr}
+section{padding-block:40px;border-bottom:1px solid var(--line)}
+h1,h2,h3{margin:0;font-weight:900;line-height:1.35;text-wrap:balance}
+h1{font-size:clamp(1.9rem,6vw,2.8rem)}
+h2{font-size:1.5rem;margin-bottom:10px}
+.hl{color:var(--accent)}
+.lead{color:var(--soft);font-size:1.08rem;margin:14px 0 0}
+.eyebrow{font-size:13px;color:var(--accent);font-weight:800;display:block;margin-bottom:10px}
+.price{display:flex;align-items:baseline;gap:12px;margin-top:18px}
+.price b{font-size:2.6rem;font-weight:900;direction:ltr}
+.price span{color:var(--muted);font-size:14px}
+.list{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+.list li{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.list li b{display:block;font-weight:800}
+.list li span{color:var(--soft);font-size:15px}
+.addons{margin-top:18px;border:1px dashed var(--edge);border-radius:14px;padding:14px 16px;color:var(--soft);font-size:15px}
+.addons b{color:var(--white)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;color:var(--soft);font-size:15px}
+.steps li::before{content:counter(s);flex:0 0 32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:900;background:var(--panel-2);border:1px solid var(--edge);color:var(--accent)}
+.honest{margin-top:18px;background:#1a0f24;border:1px solid var(--deep);border-radius:14px;padding:14px 16px;font-size:15px;color:var(--soft)}
+.honest b{color:var(--white)}
+form{display:grid;gap:18px;margin-top:10px}
+label.q{display:block;font-weight:800;margin-bottom:6px}
+label.q small{font-weight:400;color:var(--muted)}
+input[type=text],textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--white);font-family:var(--f);font-size:16px;padding:12px 14px}
+textarea{min-height:84px;resize:vertical}
+input[type=text]:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--edge)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:inline-flex;align-items:center;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
+.chips input{accent-color:var(--accent)}
+.err{color:var(--danger);font-size:13px;margin-top:4px;display:none}
+.err.show{display:block}
+.pay{background:var(--panel-2);border:1px solid var(--edge);border-radius:16px;padding:16px;display:grid;gap:10px}
+.uid{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--ink);border:1px dashed var(--edge);border-radius:12px;padding:10px 14px}
+.uid code{font-size:1.3rem;font-weight:800;letter-spacing:.08em;user-select:all}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;border-radius:14px;font-family:var(--f);font-weight:800;font-size:1.02rem;text-decoration:none;cursor:pointer;border:1px solid transparent;width:100%}
+.btn-primary{background:var(--accent);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--white);border-color:var(--edge)}
+.btn:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+.total{font-weight:900;font-size:1.1rem}
+.done{display:none;background:#14221d;border:1px solid #2f7d63;border-radius:14px;padding:14px 16px;font-size:15px}
+.done.show{display:block}
+pre{white-space:pre-wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;font-family:var(--f);font-size:13px;color:var(--soft);max-height:220px;overflow:auto}
+footer{padding-block:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+footer a{direction:ltr}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><a href="../"><b>معمّر</b> · Storytelling &amp; Branding</a><a href="https://instagram.com/mamar.growth" target="_blank" rel="noopener">@mamar.growth</a></header>
+
+  <section>
+    <span class="eyebrow">باقة المفكر الاستراتيجي</span>
+    <h1>خريطة مشروعك <span class="hl">في 24 ساعة.</span></h1>
+    <div class="price"><b>$9</b><span>9 USDT · مرة وحدة</span></div>
+    <p class="lead">جاوب على 10 أسئلة عن مشروعك، وتستلم:</p>
+    <ul class="list">
+      <li><b>لوحة الاستراتيجية</b><span>مشروعك مقابل منافسينك على العوامل اللي يتنافس عليها سوقك.</span></li>
+      <li><b>لوحة ERRC</b><span>وش تمحي، ووش تقلّل، ووش ترفع، ووش تنشئ في مشروعك.</span></li>
+      <li><b>قصة براندك</b><span>في 100 كلمة، جاهزة للصفحة والكابشن.</span></li>
+      <li><b>بايو يبيع</b><span>3 نسخ لبايو حسابك.</span></li>
+    </ul>
+    <div class="addons"><b>الإضافات (+3$ للثلاث، المجموع 12$):</b> 10 هوكات قصصية لريلز مشروعك · 5 سكربتات ريلز قصصية · تقويم محتوى 30 يوم</div>
+    <ol class="steps">
+      <li>عبّي النموذج تحت.</li>
+      <li>ادفع 9$ (أو 12$ مع الإضافات) بـBinance.</li>
+      <li>اضغط «أرسل طلبي»، وأرسل الطلب مع رقم العملية في رسائل إنستغرام.</li>
+      <li>تستلم باقتك PDF خلال 24 ساعة.</li>
+    </ol>
+    <div class="honest"><b>بصراحة:</b> الباقة مسودة نجهزها بمساعدة الذكاء الاصطناعي، ويراجعها معمّر قبل الإرسال. تعطيك صورة واضحة ونقطة بداية قوية. وإذا تبي أحد يجلس معك ويحولها لخطة تنفذها، هذي <a href="../session/">جلسة المفكر الاستراتيجي</a>.</div>
+  </section>
+
+  <section id="order">
+    <h2>نموذج الطلب</h2>
+    <form id="f" novalidate>
+      <div><label class="q" for="q1">1. اسم مشروعك ويوزر إنستغرام <small>(إن وجد)</small></label><input type="text" id="q1" required><div class="err" id="e-q1">اكتب اسم مشروعك</div></div>
+      <div><label class="q" for="q2">2. وش تبيع؟ <small>اكتبه بجملة وحدة</small></label><input type="text" id="q2" required><div class="err" id="e-q2">اكتب وش تبيع</div></div>
+      <div><label class="q" for="q3">3. لمين تبيع؟ <small>صف عميلك المثالي</small></label><textarea id="q3" required></textarea><div class="err" id="e-q3">صف عميلك ولو بسطر</div></div>
+      <div><label class="q" for="q4">4. وش أكبر مشكلة يحلها منتجك لعميلك؟</label><textarea id="q4" required></textarea><div class="err" id="e-q4">اكتب المشكلة اللي تحلها</div></div>
+      <div><label class="q" for="q5">5. مين أكبر 2–3 منافسين لك؟ <small>أو وش البديل اللي يستخدمه العميل بدالك؟</small></label><textarea id="q5" required></textarea><div class="err" id="e-q5">اذكر منافس أو بديل واحد على الأقل</div></div>
+      <div><span class="q" id="l6" style="display:block;font-weight:800;margin-bottom:6px">6. على وش يتنافس الكل في سوقك؟ <small style="font-weight:400;color:var(--muted)">(اختر كل اللي ينطبق)</small></span>
+        <div class="chips" role="group" aria-labelledby="l6" id="q6">
+          <label><input type="checkbox" value="السعر">السعر</label><label><input type="checkbox" value="السرعة">السرعة</label><label><input type="checkbox" value="الجودة">الجودة</label><label><input type="checkbox" value="الخدمة">الخدمة</label><label><input type="checkbox" value="التوصيل">التوصيل</label><label><input type="checkbox" value="الخصومات">الخصومات</label><label><input type="checkbox" value="الشكل والتغليف">الشكل والتغليف</label>
+        </div>
+        <input type="text" id="q6o" placeholder="غيرها (اختياري)" style="margin-top:8px"><div class="err" id="e-q6">اختر عامل واحد على الأقل أو اكتب غيره</div></div>
+      <div><label class="q" for="q7">7. وش اللي يميزك فعلًا؟ <small>أو وش تتمنى عملاءك يقولون عنك؟</small></label><textarea id="q7" required></textarea><div class="err" id="e-q7">اكتب ولو ميزة وحدة</div></div>
+      <div><label class="q" for="q8">8. ليش بديت مشروعك؟ <small>احكها بسطرين أو ثلاثة</small></label><textarea id="q8" required></textarea><div class="err" id="e-q8">احكِ لنا البداية ولو بسطر</div></div>
+      <div><label class="q" for="q9">9. سعر منتجك التقريبي <small>(اختياري)</small></label><input type="text" id="q9"></div>
+      <div><span class="q" id="l10" style="display:block;font-weight:800;margin-bottom:6px">10. وين تبيع؟</span>
+        <div class="chips" role="radiogroup" aria-labelledby="l10" id="q10"><label><input type="radio" name="where" value="في مدينة">في مدينة</label><label><input type="radio" name="where" value="أونلاين">أونلاين</label><label><input type="radio" name="where" value="الاثنين">الاثنين</label></div>
+        <input type="text" id="q10c" placeholder="اسم المدينة (اختياري)" style="margin-top:8px"><div class="err" id="e-q10">اختر وين تبيع</div></div>
+      <div><span class="q" id="l11" style="display:block;font-weight:800;margin-bottom:6px">تبي الإضافات؟</span>
+        <div class="chips" role="radiogroup" aria-labelledby="l11" id="q11"><label><input type="radio" name="addons" value="no" checked>لا · 9$</label><label><input type="radio" name="addons" value="yes">نعم · 12$ (هوكات + سكربتات + تقويم)</label></div></div>
+
+      <div class="pay">
+        <div class="total" id="total">المبلغ: 9 USDT</div>
+        <div>ادفع من تطبيق Binance: Pay ← Send ← أدخل الـUID:</div>
+        <div class="uid"><span style="font-size:13px;color:var(--muted)">Binance UID</span><code id="uid" dir="ltr">40421062</code></div>
+        <button type="button" class="btn btn-ghost" id="copyUid">انسخ الـUID</button>
+        <div><label class="q" for="tx">رقم العملية (Order ID) <small>بعد ما تدفع</small></label><input type="text" id="tx" dir="ltr"><div class="err" id="e-tx">اكتب رقم العملية عشان نتأكد من الدفع</div></div>
+        <button type="submit" class="btn btn-primary">أرسل طلبي</button>
+        <div class="done" id="done"><span id="doneTxt">نسخنا طلبك ✓ افتح رسائل إنستغرام، والصق الطلب وأرسله. تستلم باقتك خلال 24 ساعة.</span><a class="btn btn-primary" style="margin-top:10px" href="https://ig.me/m/mamar.growth" target="_blank" rel="noopener">افتح رسائل @mamar.growth</a></div>
+        <pre id="msg" hidden></pre>
+      </div>
+    </form>
+  </section>
+
+  <footer><span>معمّر · Storytelling &amp; Branding</span><a href="../">كل الروابط</a></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+function total(){return document.querySelector('input[name=addons]:checked').value==='yes'?12:9}
+document.querySelectorAll('input[name=addons]').forEach(r=>r.addEventListener('change',()=>{$('total').textContent='المبلغ: '+total()+' USDT'}));
+function copyText(t,btn,ok){try{navigator.clipboard.writeText(t).then(()=>{if(btn)btn.textContent=ok},()=>{})}catch(e){}}
+$('copyUid').addEventListener('click',()=>{copyText('40421062',$('copyUid'),'انْنسخ ✓');const r=document.createRange();r.selectNodeContents($('uid'));const s=getSelection();s.removeAllRanges();s.addRange(r)});
+document.querySelectorAll('#f input,#f textarea').forEach(el=>el.addEventListener('input',()=>{const e=$('e-'+el.id);if(e)e.classList.remove('show')}));
+$('q6').addEventListener('change',()=>$('e-q6').classList.remove('show'));
+$('q10').addEventListener('change',()=>$('e-q10').classList.remove('show'));
+$('f').addEventListener('submit',ev=>{
+  ev.preventDefault();let bad=null;
+  ['q1','q2','q3','q4','q5','q7','q8','tx'].forEach(id=>{if(!$(id).value.trim()){$('e-'+id).classList.add('show');bad=bad||id}});
+  const comp=[...document.querySelectorAll('#q6 input:checked')].map(i=>i.value);if($('q6o').value.trim())comp.push($('q6o').value.trim());
+  if(!comp.length){$('e-q6').classList.add('show');bad=bad||'q6o'}
+  const where=document.querySelector('input[name=where]:checked');if(!where){$('e-q10').classList.add('show');bad=bad||'q10c'}
+  if(bad){$(bad).focus();return}
+  const msg=['طلب «باقة المفكر الاستراتيجي»','المبلغ: '+total()+' USDT'+(total()===12?' (مع الإضافات)':''),'رقم العملية: '+$('tx').value.trim(),'',
+  '1. المشروع: '+$('q1').value.trim(),'2. وش أبيع: '+$('q2').value.trim(),'3. عميلي: '+$('q3').value.trim(),'4. المشكلة اللي أحلها: '+$('q4').value.trim(),
+  '5. المنافسين/البديل: '+$('q5').value.trim(),'6. السوق يتنافس على: '+comp.join('، '),'7. اللي يميزني: '+$('q7').value.trim(),'8. ليش بديت: '+$('q8').value.trim(),
+  '9. السعر: '+($('q9').value.trim()||'—'),'10. وين أبيع: '+where.value+($('q10c').value.trim()?' ('+$('q10c').value.trim()+')':'')].join('\n');
+  $('msg').textContent=msg;$('msg').hidden=false;$('done').classList.add('show');
+  try{navigator.clipboard.writeText(msg).catch(()=>{$('doneTxt').textContent='انسخ الطلب اللي تحت يدويًا، وبعدين افتح رسائل إنستغرام والصقه.'})}catch(e){$('doneTxt').textContent='انسخ الطلب اللي تحت يدويًا، وبعدين افتح رسائل إنستغرام والصقه.'}
+  $('done').scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
