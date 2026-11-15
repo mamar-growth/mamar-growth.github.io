@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>لوحة ERRC — أداة مجانية من معمّر</title>
+<meta name="description" content="أداة مجانية: ارسم لوحة ERRC لمشروعك في 10 دقايق — امسح، قلّل، ارفع، أنشئ — وطلّع مشروعك من المنافسة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
+<style>
+:root{
+  /* 60% — خلفية بيج (نفس مسار الخبراء) */
+  --bg:#FAF1E6; --paper:#F4E8DA; --paper-2:#EFE0CF;
+  /* 30% — بنفسجي معمّر الداكن (بدل الكحلي/الأسود) */
+  --plum:#2A1238; --plum-2:#3A1B4D; --text:#1E0F29; --text-2:#5B4A63; --muted:#7D6E83;
+  /* 10% — لون معمّر المميز */
+  --accent:#CC40FA; --accent-ink:#7A12C9; --on-plum:#FAF1E6; --on-plum-soft:#D9C3E6;
+  --line:rgba(42,18,56,.14); --line-2:rgba(42,18,56,.24);
+  --f:"Almarai","Segoe UI",Tahoma,system-ui,sans-serif;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --shadow-sm:0 1px 2px rgba(30,15,41,.04),0 10px 30px -18px rgba(30,15,41,.18);
+  --shadow-lg:0 2px 6px rgba(30,15,41,.05),0 28px 60px -28px rgba(30,15,41,.35);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+.logo{overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+
+body{margin:0;background-color:var(--bg);background-image:var(--noise);color:var(--text);font-family:var(--f);font-size:17px;line-height:1.8;direction:rtl;text-align:right}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible,button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+#tool,#wizard,#result,#how{scroll-margin-top:90px}
+
+.top{position:sticky;top:0;z-index:5;background:rgba(250,241,230,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.25rem}
+.logo{width:38px;height:38px;border-radius:50%;background:var(--plum);display:grid;place-items:center;color:var(--on-plum);font-size:16px;position:relative}
+.logo::after{content:"";position:absolute;inset:4px;border-radius:50%;border:2px solid var(--accent)}
+.free{font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;background:var(--plum);color:var(--on-plum)}
+
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:800;line-height:1.2}
+h1{font-size:clamp(2.1rem,5.6vw,3.4rem);letter-spacing:-1.2px}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.6px}
+.hl{color:var(--accent-ink)}
+.lead{color:var(--text-2);font-size:1.1rem;max-width:56ch;margin:18px 0 0}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.18em;color:var(--plum-2);font-weight:700;margin-bottom:16px}
+.eyebrow::before{content:"";width:32px;height:2px;border-radius:2px;background:var(--accent)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 28px;border-radius:999px;font-family:var(--f);font-weight:700;font-size:1.02rem;text-decoration:none;cursor:pointer;border:1px solid transparent;box-shadow:var(--shadow-sm);transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:var(--text)}
+.btn-primary:hover{background:#d766fb}
+.btn-dark{background:var(--plum);color:var(--on-plum)}
+.btn-dark:hover{background:var(--plum-2)}
+.btn-ghost{background:rgba(250,241,230,.6);color:var(--text);border-color:var(--line-2);box-shadow:none}
+.btn-ghost:hover{background:var(--paper)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+/* الهيرو */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding-block:56px}
+.hero>*{min-width:0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* اللوحة الداكنة 2×2 */
+.board{background:var(--plum);color:var(--on-plum);border-radius:32px;padding:24px;box-shadow:var(--shadow-lg)}
+.board .cap{font-size:12px;color:var(--on-plum-soft);letter-spacing:.08em}
+.board .bt{font-size:1.3rem;font-weight:800;margin:2px 0 14px;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cell{border:1.5px solid rgba(250,241,230,.28);border-radius:18px;padding:14px;min-height:118px;transition:border-color .3s ease,box-shadow .3s ease;min-width:0}
+.cell .w{font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cell .w small{font-size:10px;letter-spacing:.14em;color:var(--on-plum-soft);font-weight:700;direction:ltr}
+.cell ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px}
+.cell li{font-size:13.5px;color:var(--on-plum-soft);line-height:1.6;overflow-wrap:anywhere}
+.cell li::before{content:"• ";color:var(--accent)}
+.cell .ph{font-size:13px;color:rgba(217,195,230,.55)}
+.cell.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 28px -6px rgba(204,64,250,.65)}
+.cell.on .w{color:var(--on-plum)}
+
+/* الخطوات */
+.tool{padding-block:12px 64px}
+.panel{background:rgba(244,232,218,.75);border:1px solid var(--line);border-radius:32px;padding:clamp(20px,4vw,36px);box-shadow:var(--shadow-sm)}
+.progress{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:26px}
+.progress button{font-family:var(--f);font-size:13px;font-weight:700;color:var(--muted);background:transparent;border:0;border-top:3px solid var(--line-2);padding:10px 0 0;text-align:right;cursor:pointer}
+.progress button.done{color:var(--text-2);border-top-color:var(--plum)}
+.progress button.cur{color:var(--accent-ink);border-top-color:var(--accent)}
+.step-n{font-size:2.4rem;font-weight:800;color:var(--accent-ink);letter-spacing:-1px;line-height:1}
+.step-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 4px}
+.step-h .en{direction:ltr;font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:700}
+.q{font-size:1.15rem;font-weight:700;margin:14px 0 4px}
+.why{color:var(--text-2);font-size:15px;margin:0}
+.ex{margin-top:16px;background:var(--plum);color:var(--on-plum-soft);border-radius:20px;padding:14px 18px;font-size:14.5px}
+.ex b{color:var(--on-plum)}
+label.l{display:block;font-weight:700;margin:18px 0 6px}
+input[type=text],textarea{width:100%;background:rgba(250,241,230,.7);border:1px solid var(--line-2);border-radius:16px;color:var(--text);font-family:var(--f);font-size:16px;padding:12px 16px}
+textarea{min-height:120px;resize:vertical;line-height:1.8}
+.hint{font-size:13px;color:var(--muted);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-family:var(--f);font-size:14px;background:rgba(250,241,230,.7);border:1px solid var(--line-2);color:var(--text);border-radius:999px;padding:7px 14px;cursor:pointer}
+.chip:hover{border-color:var(--accent-ink)}
+.chip.used{background:var(--plum);color:var(--on-plum);border-color:var(--plum)}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;flex-wrap:wrap}
+.warn{margin-top:18px;border:1.5px solid #E2A33B;background:#FBEBD0;color:#5A3A08;border-radius:20px;padding:14px 18px;font-size:15px}
+.warn b{color:#3A2504}
+
+/* النتيجة */
+.err{color:#B3261E;font-size:13px;margin-top:4px;display:none}
+.err.show{display:block}
+.insights{margin-top:28px;display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+.insights>*{min-width:0}
+.score{background:var(--plum);color:var(--on-plum);border-radius:32px;padding:26px;box-shadow:var(--shadow-lg)}
+.score .cap{font-size:12px;color:var(--on-plum-soft);letter-spacing:.08em}
+.score .num{font-size:4rem;font-weight:800;line-height:1;margin:10px 0 4px;direction:ltr;text-align:right;letter-spacing:-2px}
+.score .num small{font-size:1.4rem;color:var(--on-plum-soft);letter-spacing:0}
+.score .lvl{font-weight:800;color:var(--accent);font-size:1.1rem}
+.bar{height:10px;border-radius:999px;background:rgba(250,241,230,.12);margin:14px 0 10px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--accent);width:0;transition:width 1s ease}
+.parts{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px;font-size:14px;color:var(--on-plum-soft)}
+.parts li{display:flex;justify-content:space-between;gap:10px}
+.parts b{color:var(--on-plum);direction:ltr}
+.canvas2{background:rgba(244,232,218,.75);border:1px solid var(--line);border-radius:32px;padding:22px;box-shadow:var(--shadow-sm)}
+.canvas2 h3{font-size:1.15rem}
+.canvas2 .sub{font-size:13px;color:var(--muted);margin:2px 0 10px}
+.legend2{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text-2)}
+.legend2 i{display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-left:6px}
+.ins-list{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.ins{background:rgba(244,232,218,.75);border:1px solid var(--line);border-radius:24px;padding:20px;min-width:0}
+.ins .t{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem}
+.ins .t span{flex:0 0 28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px}
+.ins.good .t span{background:#D5EBC4;color:#21420F}
+.ins.fix .t span{background:#FBEBD0;color:#5A3A08}
+.ins.key{background:var(--plum);border-color:var(--plum);color:var(--on-plum)}
+.ins.key .t span{background:var(--accent);color:var(--text)}
+.ins p{margin:8px 0 0;color:var(--text-2);font-size:15px}
+.ins.key p{color:var(--on-plum-soft)}
+.ins p b{color:var(--text)}
+.ins.key p b{color:var(--on-plum)}
+.honest2{grid-column:1/-1;font-size:13px;color:var(--muted)}
+@media (max-width:820px){.insights,.ins-list{grid-template-columns:1fr}}
+
+.result{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start}
+.result>*{min-width:0}
+.result .board .cell{min-height:150px}
+.actions{display:grid;gap:12px}
+.actions .btn{width:100%}
+.cta-card{background:var(--plum);color:var(--on-plum);border-radius:28px;padding:24px;margin-top:6px}
+.cta-card p{color:var(--on-plum-soft);font-size:15px;margin:8px 0 16px}
+.toast{font-size:14px;color:var(--accent-ink);font-weight:700;min-height:1.6em;text-align:center}
+
+section.how{padding-block:56px;border-top:1px solid var(--line)}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.four>div{border-top:1px solid var(--line-2);padding-top:14px;min-width:0}
+.four b{display:block;font-size:1.2rem}
+.four p{margin:4px 0 0;color:var(--text-2);font-size:15px}
+
+footer{background:var(--plum);color:var(--on-plum)}
+footer .wrap{padding-block:40px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .logo{background:var(--on-plum);color:var(--plum)}
+footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
+
+@media (max-width:820px){.hero,.result{grid-template-columns:1fr}.four{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){
+  .hero{padding-block:36px}
+  .ctas .btn,.nav .btn{width:100%}
+  .progress button{font-size:11px}
+  .four{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.btn,.cell{transition:none}.btn:hover{transform:none}}
+@media print{
+  .top,.hero,.how,footer,.actions,.progress,.nav{display:none!important}
+  body{background:#fff}
+  .board{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="logo"><img src="../avatar-sm.jpg" alt="" width="38" height="38"></span>معمّر</a>
+    <span class="free">أداة مجانية</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" aria-labelledby="h-hero">
+    <div>
+      <span class="eyebrow">لوحة ERRC · 10 دقايق</span>
+      <h1 id="h-hero">أربع كلمات <span class="hl">تطلّع مشروعك من المنافسة.</span></h1>
+      <p class="lead">امسح، قلّل، ارفع، أنشئ. الأداة اللي أفتحها قبل ما أكتب أي خطة، من كتاب «استراتيجية المحيط الأزرق». جاوب على أربع أسئلة، وتطلع لك لوحة مشروعك جاهزة تحفظها صورة.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#tool">ابدأ لوحتك ←</a>
+        <a class="btn btn-ghost" href="#how">وش هي لوحة ERRC؟</a>
+      </div>
+      <p class="note">مجانية بالكامل · ما تحتاج تسجيل · إجاباتك تنحفظ في جهازك بس</p>
+    </div>
+    <figure class="board" style="margin:0" aria-label="مثال على لوحة ERRC">
+      <div class="cap">مثال · حساب ينزّل نصيحة كل يوم</div>
+      <div class="bt">لوحة ERRC</div>
+      <div class="grid">
+        <div class="cell"><div class="w">امسح <small>ELIMINATE</small></div><ul><li>النصيحة اللي ما وراها قصة</li></ul></div>
+        <div class="cell"><div class="w">قلّل <small>REDUCE</small></div><ul><li>3 منشورات سريعة ← منشور واحد أعمق</li></ul></div>
+        <div class="cell"><div class="w">ارفع <small>RAISE</small></div><ul><li>قصة عميقة ومصدر موثوق</li></ul></div>
+        <div class="cell on"><div class="w">أنشئ <small>CREATE</small></div><ul><li>كل منشور يخلّص بخطوة تطبقها</li></ul></div>
+      </div>
+    </figure>
+  </section>
+
+  <section id="tool" class="tool" aria-label="أداة لوحة ERRC">
+    <div class="panel" id="wizard">
+      <div class="progress" role="tablist" aria-label="خطوات اللوحة" id="prog"></div>
+
+      <!-- الخطوة 0 -->
+      <div class="step" data-step="0">
+        <div class="step-n">00</div>
+        <div class="step-h"><h2>عرّفني على مشروعك</h2></div>
+        <p class="why">جملتين بس. كل ما كنت أوضح، طلعت لوحتك أدق.</p>
+        <label class="l" for="name">اسم مشروعك أو حسابك</label>
+        <input type="text" id="name" maxlength="60" placeholder="مثال: مقهى الزاوية، أو @youraccount">
+        <label class="l" for="what">وش تبيع، ولمين؟</label>
+        <input type="text" id="what" maxlength="140" placeholder="مثال: قهوة مختصة لموظفين يبون جلسة هادية بعد الدوام">
+        <label class="l" for="race">على وش يتنافس الكل في سوقك؟</label>
+        <div class="chips" data-target="race">
+          <button type="button" class="chip">السعر</button><button type="button" class="chip">الخصومات</button><button type="button" class="chip">السرعة</button><button type="button" class="chip">كثرة المنشورات</button><button type="button" class="chip">الإعلانات</button><button type="button" class="chip">كثرة الخيارات</button><button type="button" class="chip">الشكل والتغليف</button>
+        </div>
+        <textarea id="race" style="min-height:70px;margin-top:10px" placeholder="اختر من فوق أو اكتب بنفسك"></textarea>
+      </div>
+
+      <!-- خطوات ERRC -->
+      <div class="step" data-step="1" hidden>
+        <div class="step-n">01</div>
+        <div class="step-h"><h2>امسح</h2><span class="en">ELIMINATE</span></div>
+        <p class="q">وش يسويه الكل في سوقك، والعميل أصلًا ما يحتاجه؟</p>
+        <p class="why">أشياء تتعب عليها لأن «الكل يسويها»، مو لأن عميلك يدفع عشانها.</p>
+        <div class="ex"><b>مثال:</b> حساب ينزّل نصيحة سريعة كل يوم؟ أول شي أمسحه: النصيحة اللي ما وراها قصة.</div>
+        <label class="l" for="e">اكتب كل شي في سطر</label>
+        <div class="chips" data-target="e"><button type="button" class="chip">الخصومات المستمرة</button><button type="button" class="chip">نصايح عامة بلا قصة</button><button type="button" class="chip">تقليد المنافسين</button><button type="button" class="chip">خدمات ما أحد يطلبها</button><button type="button" class="chip">النشر لمجرد النشر</button></div>
+        <textarea id="e" placeholder="سطر لكل شي تبي تمسحه"></textarea>
+        <p class="hint">من شي واحد إلى ثلاثة يكفي.</p>
+      </div>
+
+      <div class="step" data-step="2" hidden>
+        <div class="step-n">02</div>
+        <div class="step-h"><h2>قلّل</h2><span class="en">REDUCE</span></div>
+        <p class="q">وش تصرف عليه وقت أو فلوس أكثر من اللازم؟</p>
+        <p class="why">ما تمسحه كله، بس تنزّله تحت مستوى السوق. التعب اللي ما يجيب نتيجة.</p>
+        <div class="ex"><b>مثال:</b> بدل ثلاث منشورات سريعة كل يوم، خلّها منشور واحد أعمق.</div>
+        <label class="l" for="r">اكتب كل شي في سطر</label>
+        <div class="chips" data-target="r"><button type="button" class="chip">عدد المنشورات اليومية</button><button type="button" class="chip">الإعلانات العشوائية</button><button type="button" class="chip">الخيارات الكثيرة اللي تحيّر العميل</button><button type="button" class="chip">الردود اليدوية</button><button type="button" class="chip">الكلام عن المنتج نفسه</button></div>
+        <textarea id="r" placeholder="سطر لكل شي تبي تقلّله"></textarea>
+      </div>
+
+      <div class="step" data-step="3" hidden>
+        <div class="step-n">03</div>
+        <div class="step-h"><h2>ارفع</h2><span class="en">RAISE</span></div>
+        <p class="q">وش لازم تكون فيه أقوى من السوق بوضوح؟</p>
+        <p class="why">الشي اللي عميلك يتمناه ومحد معطيه حقه. هنا يبدأ التميّز.</p>
+        <div class="ex"><b>مثال:</b> ارفع اللي يفرّقك عن غيرك: قصة عميقة ومصدر موثوق.</div>
+        <label class="l" for="ra">اكتب كل شي في سطر</label>
+        <div class="chips" data-target="ra"><button type="button" class="chip">القصة ورا المشروع</button><button type="button" class="chip">الثقة والمصادر</button><button type="button" class="chip">تجربة العميل بعد الشراء</button><button type="button" class="chip">سرعة الرد</button><button type="button" class="chip">عمق المحتوى</button></div>
+        <textarea id="ra" placeholder="سطر لكل شي تبي ترفعه"></textarea>
+      </div>
+
+      <div class="step" data-step="4" hidden>
+        <div class="step-n">04</div>
+        <div class="step-h"><h2>أنشئ</h2><span class="en">CREATE</span></div>
+        <p class="q">وش تقدر تقدّمه وما أحد غيرك يقدّمه؟</p>
+        <p class="why">أهم خانة في اللوحة. شي جديد يخليك خارج المقارنة بالكامل.</p>
+        <div class="ex"><b>مثال:</b> سوّ شي جديد ما سواه أحد: كل منشور يخلّص بخطوة تطبقها على مشروعك.</div>
+        <label class="l" for="c">اكتب كل شي في سطر</label>
+        <div class="chips" data-target="c"><button type="button" class="chip">خطوة عملية آخر كل منشور</button><button type="button" class="chip">ضمان ما يقدمه أحد</button><button type="button" class="chip">مجتمع لعملائك</button><button type="button" class="chip">أداة مجانية تحل مشكلة</button><button type="button" class="chip">سلسلة قصص موثقة</button></div>
+        <textarea id="c" placeholder="سطر لكل شي تبي تنشئه"></textarea>
+      </div>
+
+      <div class="step" data-step="5" hidden>
+        <div class="step-n">05</div>
+        <div class="step-h"><h2>تحليل لوحتك جاهز</h2></div>
+        <p class="why">قبل ما أعرضه لك: وين أقدر أتواصل معك لو عندي ملاحظة على لوحتك؟</p>
+        <label class="l" for="lname">اسمك</label>
+        <input type="text" id="lname" maxlength="60" autocomplete="name" placeholder="مثال: عبدالله">
+        <div class="err" id="e-lname">اكتب اسمك</div>
+        <label class="l" for="lig">يوزر إنستغرام</label>
+        <input type="text" id="lig" maxlength="40" dir="ltr" style="text-align:right" placeholder="@youraccount">
+        <div class="err" id="e-lig">اكتب يوزرك عشان أقدر أرسل لك</div>
+        <label class="l" for="lwa">رقم واتساب <small style="font-weight:400;color:var(--muted)">(اختياري)</small></label>
+        <input type="text" id="lwa" maxlength="20" dir="ltr" style="text-align:right" inputmode="tel" placeholder="+9665xxxxxxxx">
+        <p class="hint">بياناتك تروح لمعمّر بس، وما تنشارك مع أي أحد.</p>
+      </div>
+
+      <div class="warn" id="warn" hidden><b>انتبه للخطأ الأشهر:</b> توقف عند المسح. تمسح وتقلّل، وتنسى ترفع وتنشئ، ويطلع مشروعك مرتب بس ما يفرّقه شي عن غيره. عبّ خانة <span id="warn-which"></span> قبل ما تكمل.</div>
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" id="back">→ رجوع</button>
+        <button type="button" class="btn btn-dark" id="next">التالي ←</button>
+      </div>
+    </div>
+
+    <!-- النتيجة -->
+    <div class="result" id="result" hidden>
+      <figure class="board" style="margin:0" id="final">
+        <div class="cap" id="f-what"></div>
+        <div class="bt" id="f-name">لوحة ERRC</div>
+        <div class="grid">
+          <div class="cell on"><div class="w">امسح <small>ELIMINATE</small></div><ul id="f-e"></ul></div>
+          <div class="cell on"><div class="w">قلّل <small>REDUCE</small></div><ul id="f-r"></ul></div>
+          <div class="cell on"><div class="w">ارفع <small>RAISE</small></div><ul id="f-ra"></ul></div>
+          <div class="cell on"><div class="w">أنشئ <small>CREATE</small></div><ul id="f-c"></ul></div>
+        </div>
+      </figure>
+      <div class="actions">
+        <span class="eyebrow">لوحتك جاهزة</span>
+        <h2>هذي خريطة قرارك الجاي.</h2>
+        <button type="button" class="btn btn-primary" id="png">احفظ اللوحة صورة</button>
+        <button type="button" class="btn btn-ghost" id="copy">انسخ اللوحة نص</button>
+        <button type="button" class="btn btn-ghost" id="edit">عدّل إجاباتك</button>
+        <div class="toast" id="toast" aria-live="polite"></div>
+        <div class="cta-card">
+          <h3>اللوحة تقول لك «وش». الجلسة تقول لك «كيف».</h3>
+          <p>في 60 دقيقة نرسم لوحة الاستراتيجية لمشروعك، ونحوّل لوحة ERRC هذي لقصة براند وخطة تنفذها.</p>
+          <a class="btn btn-primary" href="../session/" style="width:100%">احجز جلسة المفكر الاستراتيجي ←</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="insights" id="insights" hidden aria-labelledby="h-ins">
+      <div style="grid-column:1/-1"><span class="eyebrow">تحليل لوحتك</span><h2 id="h-ins">وش تقول لوحتك عن مشروعك؟</h2></div>
+      <div class="score">
+        <div class="cap">مؤشر الخروج من المنافسة</div>
+        <div class="num"><span id="sc">0</span><small>/100</small></div>
+        <div class="lvl" id="sc-lvl"></div>
+        <div class="bar"><i id="sc-bar"></i></div>
+        <ul class="parts" id="sc-parts"></ul>
+      </div>
+      <div class="canvas2">
+        <h3>منحنى قيمتك الجديد</h3>
+        <p class="sub">مبني من إجاباتك: وين السوق قوي، ووين بتكون أنت بعد اللوحة.</p>
+        <svg id="vc" viewBox="0 0 560 300" role="img" aria-label="منحنى القيمة: مشروعك مقابل السوق" style="width:100%;height:auto;display:block"></svg>
+        <div class="legend2"><span><i style="background:#CC40FA"></i>مشروعك بعد اللوحة</span><span><i style="background:#7D6E83"></i>السوق اليوم</span></div>
+      </div>
+      <div class="ins-list" id="ins-list"></div>
+      <p class="honest2">التحليل مبني على إجاباتك أنت بقواعد منهج المحيط الأزرق، مو تخمين. كل ما كانت إجاباتك أوضح، كان التحليل أدق.</p>
+    </div>
+  </section>
+
+  <section class="how" id="how" aria-labelledby="h-how">
+    <span class="eyebrow">وش هي لوحة ERRC؟</span>
+    <h2 id="h-how">من «استراتيجية المحيط الأزرق»، بأربع كلمات</h2>
+    <p class="lead">بدل ما تنافس على نفس الأشياء اللي ينافس عليها الكل، تعيد ترتيبها: وش تشيل، ووش تخفف، ووش تقوّي، ووش تضيف جديد.</p>
+    <div class="four">
+      <div><b>امسح</b><p>اللي يسويه الكل وما ينفعك.</p></div>
+      <div><b>قلّل</b><p>الجهد اللي ما يجيب نتيجة.</p></div>
+      <div><b>ارفع</b><p>اللي يفرّقك فوق مستوى المجال.</p></div>
+      <div><b>أنشئ</b><p>اللي ما سواه أحد قبلك.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="../" style="color:var(--on-plum)"><span class="logo"><img src="../avatar-sm.jpg" alt="" width="38" height="38"></span>معمّر · Storytelling &amp; Branding</a>
+    <a class="h" href="https://instagram.com/mamer.growth" target="_blank" rel="noopener" dir="ltr">@mamer.growth</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var KEY="mamer-errc-v1";
+  var FIELDS=["name","what","race","e","r","ra","c","lname","lig","lwa"];
+  var LABELS=["مشروعك","امسح","قلّل","ارفع","أنشئ","تحليلك"];
+  var steps=[].slice.call(document.querySelectorAll(".step"));
+  var cur=0;
+
+  function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||"{}");FIELDS.forEach(function(f){if(d[f])$(f).value=d[f]})}catch(e){}}
+  function save(){try{var d={};FIELDS.forEach(function(f){d[f]=$(f).value});localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  function lines(id){return $(id).value.split("\n").map(function(s){return s.trim()}).filter(Boolean)}
+
+  var prog=$("prog");
+  LABELS.forEach(function(l,i){var b=document.createElement("button");b.type="button";b.textContent=l;b.setAttribute("role","tab");b.addEventListener("click",function(){go(i)});prog.appendChild(b)});
+
+  function syncChips(){
+    document.querySelectorAll(".chips").forEach(function(g){
+      var have=lines(g.dataset.target);
+      g.querySelectorAll(".chip").forEach(function(c){c.classList.toggle("used",have.indexOf(c.textContent)>-1);c.setAttribute("aria-pressed",have.indexOf(c.textContent)>-1)});
+    });
+  }
+  document.querySelectorAll(".chips").forEach(function(g){
+    g.addEventListener("click",function(ev){
+      var c=ev.target.closest(".chip");if(!c)return;
+      var t=$(g.dataset.target),have=lines(g.dataset.target),v=c.textContent,i=have.indexOf(v);
+      if(i>-1)have.splice(i,1);else have.push(v);
+      t.value=have.join("\n");save();syncChips();
+    });
+  });
+  FIELDS.forEach(function(f){$(f).addEventListener("input",function(){save();syncChips();$("warn").hidden=true})});
+
+  function go(i){
+    cur=Math.max(0,Math.min(steps.length-1,i));
+    steps.forEach(function(s,k){s.hidden=k!==cur});
+    if(cur!==4&&cur!==3)$("warn").hidden=true;
+    [].forEach.call(prog.children,function(b,k){b.classList.toggle("cur",k===cur);b.classList.toggle("done",k<cur);b.setAttribute("aria-selected",k===cur)});
+    $("back").disabled=cur===0;
+    $("next").textContent=cur===steps.length-1?"اعرض لوحتي ←":"التالي ←";
+    var first=steps[cur].querySelector("input,textarea");
+  }
+  $("back").addEventListener("click",function(){go(cur-1);$("wizard").scrollIntoView({behavior:"smooth",block:"start"})});
+  $("next").addEventListener("click",function(){
+    if(cur===4){var m=[];if(!lines("ra").length)m.push("«ارفع»");if(!lines("c").length)m.push("«أنشئ»");
+      if(m.length){$("warn-which").textContent=m.join(" و");$("warn").hidden=false;if(!lines("ra").length)go(3);return}}
+    if(cur<steps.length-1){go(cur+1);$("wizard").scrollIntoView({behavior:"smooth",block:"start"});return}
+    var miss=[];if(!lines("ra").length)miss.push("«ارفع»");if(!lines("c").length)miss.push("«أنشئ»");
+    if(miss.length){$("warn-which").textContent=miss.join(" و");$("warn").hidden=false;go(!lines("ra").length?3:4);return}
+    var bad=false;["lname","lig"].forEach(function(id){var e=$("e-"+id);var ok=!!$(id).value.trim();e.classList.toggle("show",!ok);if(!ok&&!bad){$(id).focus();bad=true}});
+    if(bad)return;
+    send();show();
+  });
+
+  function fill(id,arr){var ul=$(id);ul.innerHTML="";(arr.length?arr:["—"]).forEach(function(t){var li=document.createElement("li");li.textContent=t;ul.appendChild(li)})}
+  function show(){
+    var name=$("name").value.trim();
+    $("f-name").textContent=name?("لوحة ERRC · "+name):"لوحة ERRC";
+    $("f-what").textContent=$("what").value.trim()||"مشروعي";
+    fill("f-e",lines("e"));fill("f-r",lines("r"));fill("f-ra",lines("ra"));fill("f-c",lines("c"));
+    $("wizard").hidden=true;$("result").hidden=false;$("insights").hidden=false;analyze();
+    $("result").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+  $("edit").addEventListener("click",function(){$("result").hidden=true;$("insights").hidden=true;$("wizard").hidden=false;go(1);$("wizard").scrollIntoView({behavior:"smooth",block:"start"})});
+
+  function toast(t){$("toast").textContent=t;setTimeout(function(){$("toast").textContent=""},3000)}
+  function asText(){
+    var name=$("name").value.trim()||"مشروعي";
+    var b=function(h,id){return h+":\n"+(lines(id).map(function(s){return "• "+s}).join("\n")||"—")};
+    return ["لوحة ERRC · "+name,$("what").value.trim(),"",b("امسح",'e'),"",b("قلّل",'r'),"",b("ارفع",'ra'),"",b("أنشئ",'c'),"","— من أداة معمّر المجانية: mamar-growth.github.io/errc"].join("\n");
+  }
+  $("copy").addEventListener("click",function(){
+    var t=asText();
+    try{navigator.clipboard.writeText(t).then(function(){toast("اننسخت اللوحة ✓")},function(){toast("ما قدرت أنسخ، جرّب حفظها صورة")})}catch(e){toast("ما قدرت أنسخ، جرّب حفظها صورة")}
+  });
+
+  /* حفظ اللوحة صورة 1080×1350 */
+  function wrap(ctx,text,maxW){
+    var words=text.split(" "),out=[],line="";
+    words.forEach(function(w){var t=line?line+" "+w:w;if(ctx.measureText(t).width>maxW&&line){out.push(line);line=w}else line=t});
+    if(line)out.push(line);return out;
+  }
+  function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+  $("png").addEventListener("click",function(){
+    var go2=function(){
+      var W=1080,H=1350,cv=document.createElement("canvas");cv.width=W;cv.height=H;
+      var ctx=cv.getContext("2d");ctx.direction="rtl";ctx.textAlign="right";
+      ctx.fillStyle="#2A1238";ctx.fillRect(0,0,W,H);
+      var F="Almarai, sans-serif";
+      ctx.fillStyle="#D9C3E6";ctx.font="700 30px "+F;ctx.fillText(($("what").value.trim()||"مشروعي").slice(0,70),W-70,110);
+      ctx.fillStyle="#FAF1E6";ctx.font="800 64px "+F;ctx.fillText(("لوحة ERRC"+($("name").value.trim()?" · "+$("name").value.trim():"")).slice(0,34),W-70,190);
+      var cells=[["امسح","e"],["قلّل","r"],["ارفع","ra"],["أنشئ","c"]];
+      var gx=70,gy=250,gap=24,cw=(W-140-gap)/2,ch=(H-gy-150-gap)/2;
+      cells.forEach(function(c,i){
+        var col=i%2,row=Math.floor(i/2);
+        var x=W-70-cw-col*(cw+gap),y=gy+row*(ch+gap);
+        rr(ctx,x,y,cw,ch,32);ctx.strokeStyle="#CC40FA";ctx.lineWidth=3;ctx.stroke();
+        ctx.fillStyle="#FAF1E6";ctx.font="800 50px "+F;ctx.fillText(c[0],x+cw-34,y+78);
+        ctx.font="400 28px "+F;var yy=y+140;
+        lines(c[1]).forEach(function(s){
+          wrap(ctx,"• "+s,cw-68).forEach(function(l){if(yy<y+ch-24){ctx.fillStyle="#D9C3E6";ctx.fillText(l,x+cw-34,yy);yy+=44}});
+          yy+=8;
+        });
+      });
+      ctx.fillStyle="#CC40FA";ctx.font="700 28px "+F;ctx.textAlign="left";ctx.direction="ltr";ctx.fillText("@mamer.growth",70,H-70);
+      ctx.textAlign="right";ctx.direction="rtl";ctx.fillStyle="#D9C3E6";ctx.font="400 26px "+F;ctx.fillText("أداة مجانية من معمّر",W-70,H-70);
+      cv.toBlob(function(b){
+        if(!b){toast("ما قدرت أحفظ الصورة");return}
+        var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="لوحة-ERRC.png";document.body.appendChild(a);a.click();a.remove();
+        setTimeout(function(){URL.revokeObjectURL(a.href)},2000);toast("انحفظت الصورة ✓");
+      },"image/png");
+    };
+    if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load("800 50px Almarai"),document.fonts.load("400 28px Almarai")]).then(go2,go2)}else go2();
+  });
+
+
+  /* ===== إرسال بيانات العميل ===== */
+  var ENDPOINT=""; /* رابط Google Apps Script — يتعبّى بعد الربط */
+  function send(){
+    var d={time:new Date().toISOString(),name:$("lname").value.trim(),instagram:$("lig").value.trim(),whatsapp:$("lwa").value.trim(),
+      project:$("name").value.trim(),what:$("what").value.trim(),race:lines("race").join(" | "),
+      eliminate:lines("e").join(" | "),reduce:lines("r").join(" | "),raise:lines("ra").join(" | "),create:lines("c").join(" | "),score:0};
+    try{d.score=analyze(true).score}catch(e){}
+    if(!ENDPOINT)return;
+    try{fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)})}catch(e){}
+  }
+
+  /* ===== التحليل ===== */
+  var MAP={"السعر":["السعر","الخصومات","الأسعار","التخفيض"],"الخصومات":["الخصومات","الخصم","العروض","التخفيض"],"السرعة":["السرعة","سريع"],
+    "كثرة المنشورات":["المنشورات","النشر"],"الإعلانات":["الإعلانات","اعلانات","إعلان"],"كثرة الخيارات":["الخيارات","الأصناف","المنتجات"],"الشكل والتغليف":["الشكل","التغليف"]};
+  var SUGG=[].slice.call(document.querySelectorAll(".chip")).map(function(c){return c.textContent});
+  function has(list,keys){return list.some(function(t){return keys.some(function(k){return t.indexOf(k)>-1})})}
+  function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
+  function analyze(quiet){
+    var race=lines("race"),E=lines("e"),R=lines("r"),RA=lines("ra"),C=lines("c");
+    var cut=E.concat(R),add=RA.concat(C),all=cut.concat(add);
+    // 1) هل تعاملت مع عوامل المنافسة؟
+    var handled=[],open=[];
+    race.forEach(function(f){var keys=MAP[f]||[f.split(" ")[0]];(has(cut,keys)?handled:open).push(f)});
+    var p1=race.length?Math.round(30*handled.length/Math.max(race.length,2)):10;
+    // 2) توازن الشيل والإضافة
+    var p2=(cut.length&&add.length)?(Math.abs(cut.length-add.length)<=2?25:16):5;
+    // 3) أصالة «أنشئ»
+    var own=C.filter(function(t){return SUGG.indexOf(t)<0});
+    var p3=C.length?(own.length?25:12):0;
+    // 4) الوضوح
+    var avg=all.length?all.reduce(function(a,t){return a+t.length},0)/all.length:0;
+    var ownAll=all.filter(function(t){return SUGG.indexOf(t)<0}).length;
+    var p4=Math.min(20,Math.round((avg>=14?10:avg/1.4)+(all.length?10*ownAll/all.length:0)));
+    var score=Math.max(0,Math.min(100,p1+p2+p3+p4));
+    if(quiet)return {score:score};
+    var lvl=score>=80?"محيط أزرق واضح":score>=60?"قريب من الخروج":score>=40?"بداية الطريق":"لسا في المحيط الأحمر";
+    $("sc").textContent=score;$("sc-lvl").textContent=lvl;
+    setTimeout(function(){$("sc-bar").style.width=score+"%"},60);
+    $("sc-parts").innerHTML=[["تعاملت مع عوامل المنافسة",p1,30],["التوازن بين الشيل والإضافة",p2,25],["قوة خانة «أنشئ»",p3,25],["وضوح إجاباتك",p4,20]]
+      .map(function(x){return "<li><span>"+x[0]+"</span><b>"+x[1]+"/"+x[2]+"</b></li>"}).join("");
+
+    // منحنى القيمة
+    var F=[];
+    race.slice(0,4).forEach(function(f){var keys=MAP[f]||[f.split(" ")[0]];var you=has(E,keys)?0.6:has(R,keys)?3:7;F.push([f,8,you])});
+    RA.slice(0,2).forEach(function(t){F.push([t,5,9.2])});
+    C.slice(0,2).forEach(function(t){F.push([t,0.6,8.6])});
+    if(F.length<2)F=[["السعر",8,4],["القصة",3,9]];
+    drawVC(F);
+
+    // الرؤى
+    var out=[];
+    if(open.length){out.push(["fix","!","لسا تنافس على "+open.join("، "),"قلت إن سوقك يتنافس على <b>"+esc(open.join("، "))+"</b>، وما مسحتها ولا قلّلتها. يعني بتظل تتعب في نفس السباق اللي يتعب فيه الكل. قرّر فيها: تمسحها، أو تقلّلها لمستوى «كافي»، أو تعرف ليش تبيها."])}
+    else if(race.length){out.push(["good","✓","طلعت من سباق المنافسين","كل عامل يتنافس عليه سوقك ("+esc(race.join("، "))+") مسحته أو قلّلته. هذا أصعب قرار في اللوحة، وأنت سويته."])}
+    if(cut.length>add.length+2){out.push(["fix","!","تشيل أكثر مما تضيف","مسحت وقلّلت "+cut.length+" أشياء، ورفعت وأنشأت "+add.length+" بس. لو وقفت هنا، مشروعك بيصير أرخص تكلفة… بس مو أكثر تميّز. المحيط الأزرق يحتاج الاثنين مع بعض."])}
+    else if(add.length>cut.length+2){out.push(["fix","!","تضيف بدون ما تشيل","أضفت "+add.length+" أشياء وشلت "+cut.length+" بس. كل إضافة لها تكلفة. بدون ما تمسح وتقلّل، بتزيد مصاريفك وتعبك. شيل شي مقابل كل شي تضيفه."])}
+    else if(cut.length&&add.length){out.push(["good","✓","لوحتك متوازنة","شلت "+cut.length+" وأضفت "+add.length+". هذا التوازن اللي يخليك متميز وبتكلفة أقل في نفس الوقت."])}
+    if(C.length&&!own.length){out.push(["fix","!","خانة «أنشئ» تحتاج بصمتك","كل اللي في «أنشئ» من الاقتراحات الجاهزة. الاقتراحات تفتح لك الفكرة، بس الشي اللي محد يقدر ينسخه لازم يكون من قصتك أنت. اكتبه بكلماتك وبتفاصيل مشروعك."])}
+    var key=own[0]||C[0];
+    if(key){out.push(["key","★","قرارك الأول هالأسبوع","ابدأ بـ <b>«"+esc(key)+"»</b>. هذا الشي اللي يخليك خارج المقارنة. حوّله لخطوة وحدة تقدر تبدأها خلال 7 أيام، وخلّ كل الباقي يخدمه."])}
+    $("ins-list").innerHTML=out.slice(0,4).map(function(o){return '<div class="ins '+o[0]+'"><div class="t"><span>'+o[1]+'</span>'+esc(o[2])+'</div><p>'+o[3]+'</p></div>'}).join("");
+    return {score:score};
+  }
+  function drawVC(F){
+    var W=560,H=300,L=24,Rr=W-24,T=24,B=H-70,n=F.length,ns="http://www.w3.org/2000/svg",svg=$("vc");svg.innerHTML="";
+    function el(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+    for(var g=0;g<=4;g++){var y=T+(B-T)*g/4;el("line",{x1:L,x2:Rr,y1:y,y2:y,stroke:"rgba(42,18,56,.12)"})}
+    function X(i){return n===1?(L+Rr)/2:Rr-(Rr-L)*i/(n-1)}
+    function Y(v){return B-(B-T)*v/10}
+    function line(idx,col,dash,w){var pts=F.map(function(f,i){return X(i)+","+Y(f[idx])}).join(" ");var a={points:pts,fill:"none",stroke:col,"stroke-width":w,"stroke-linejoin":"round"};if(dash)a["stroke-dasharray"]="6 6";el("polyline",a)}
+    line(1,"#7D6E83",true,2.5);line(2,"#CC40FA",false,3.5);
+    F.forEach(function(f,i){el("circle",{cx:X(i),cy:Y(f[2]),r:5,fill:"#CC40FA"});
+      var t=el("text",{x:X(i),y:B+22,"text-anchor":"middle","font-size":"12","font-family":"Almarai, sans-serif",fill:"#5B4A63"});
+      var s=f[0].length>14?f[0].slice(0,13)+"…":f[0];t.textContent=s;});
+  }
+  load();syncChips();go(0);
+})();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>روابط معمّر</title>
-<meta name="description" content="معمّر | Storytelling & Branding — جلسة المفكر الاستراتيجي، باقة المفكر الاستراتيجي، وكتب مجانية.">
+<meta name="description" content="معمّر | Storytelling & Branding — جلسة المفكر الاستراتيجي، باقة المفكر الاستراتيجي، وأداة لوحة ERRC المجانية.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
@@ -29,8 +29,9 @@ body{margin:0;background-color:var(--bg);background-image:var(--noise);color:var
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 main{max-width:480px;margin:0 auto;padding-block:44px 28px;display:flex;flex-direction:column;gap:14px}
 .id{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:12px}
-.mark{width:76px;height:76px;border-radius:50%;background:var(--plum);display:grid;place-items:center;font-size:30px;font-weight:800;color:var(--on-plum);box-shadow:var(--shadow-lg);position:relative}
-.mark::after{content:"";position:absolute;inset:6px;border-radius:50%;border:2px solid var(--accent)}
+.mark{width:104px;height:104px;overflow:visible;border-radius:50%;background:var(--plum);display:grid;place-items:center;font-size:30px;font-weight:800;color:var(--on-plum);box-shadow:var(--shadow-lg);position:relative}
+.mark img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.mark::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--accent)}
 h1{margin:6px 0 0;font-size:1.9rem;font-weight:800;line-height:1.2;letter-spacing:-.5px}
 .sub{font-size:14px;color:var(--text-2);direction:ltr}
 .thesis{margin:12px 0 0;font-size:1.05rem;font-weight:700;color:var(--text);text-wrap:balance}
@@ -40,6 +41,9 @@ a.card:hover{transform:translateY(-2px);border-color:var(--line-2)}
 a.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 a.card.main{background:var(--plum);border-color:var(--plum);color:var(--on-plum);box-shadow:var(--shadow-lg)}
 a.card.main .meta{color:var(--on-plum-soft)}
+a.card.free-main{border-color:var(--accent);border-width:1.5px}
+a.card.free-main .ico{background:var(--plum);color:var(--accent)}
+a.card.free-main .pill{background:var(--accent);color:var(--text)}
 a.card.main .pill{background:var(--accent);color:var(--text)}
 .txt{flex:1;min-width:0}
 .ttl{display:block;font-weight:800;font-size:1.08rem;line-height:1.4}
@@ -61,7 +65,7 @@ footer a{color:var(--text-2)}
 
 <main>
   <header class="id">
-    <div class="mark" aria-hidden="true">م</div>
+    <div class="mark"><img src="avatar.jpg" alt="معمّر" width="104" height="104"></div>
     <h1>معمّر</h1>
     <div class="sub">Storytelling &amp; Branding · @mamer.growth</div>
     <p class="thesis">الأعمال سلسلة قرارات، <span>والقرار الذكي يُتعلَّم.</span></p>
@@ -80,6 +84,11 @@ footer a{color:var(--text-2)}
   </a>
 
   <p class="label">مجاني</p>
+  <a class="card free-main" href="errc/">
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></span>
+    <span class="txt"><span class="ttl">لوحة ERRC لمشروعك</span><span class="meta">أداة تفاعلية · امسح، قلّل، ارفع، أنشئ · 10 دقايق</span></span>
+    <span class="pill">ابدأ</span>
+  </a>
   <a class="card" href="4-questions.pdf" target="_blank" rel="noopener">
     <img class="cover" src="guide-cover.jpg" alt="غلاف كتيّب 4 أسئلة تطلّع مشروعك من حرب الأسعار" width="56" height="84">
     <span class="txt"><span class="ttl">كتيّب: 4 أسئلة تطلّع مشروعك من حرب الأسعار</span><span class="meta">3 قصص نجاح · 20 دقيقة · PDF</span></span>

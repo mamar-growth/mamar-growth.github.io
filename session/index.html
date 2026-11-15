@@ -25,6 +25,9 @@
 }
 
 *{box-sizing:border-box}
+.logo{overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+
 body{margin:0;background-color:var(--bg);background-image:var(--noise);color:var(--text);font-family:var(--f);font-size:17px;line-height:1.8;direction:rtl;text-align:right}
 .wrap{max-width:1040px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 a{color:inherit}
@@ -131,7 +134,7 @@ details p{margin:8px 0 0;color:var(--text-2);font-size:15px;max-width:65ch}
 footer{background:var(--plum);color:var(--on-plum)}
 footer .wrap{padding-block:44px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 footer .brand{color:var(--on-plum)}
-footer .logo{background:var(--on-plum);color:var(--plum)}
+footer .logo{background:var(--on-plum)}
 footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
 
 @media (max-width:820px){
@@ -153,7 +156,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="../"><span class="logo" aria-hidden="true">م</span>معمّر</a>
+    <a class="brand" href="../"><span class="logo"><img src="../avatar-sm.jpg" alt="" width="38" height="38"></span>معمّر</a>
     <a class="btn btn-dark" href="#prices">احجز جلستك</a>
   </div>
 </header>
@@ -206,7 +209,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     <h2 id="h-errc">وش نسوي في الـ60 دقيقة؟</h2>
     <p class="lead" style="margin-top:6px">نرسم لوحة استراتيجية مشروعك، ونطبّق عليها لوحة ERRC من منهج المحيط الأزرق:</p>
     <div class="errc">
-      <div><span class="k">امحُ</span><span class="en">ELIMINATE</span><p>وش تسويه أنت ومنافسينك، والعميل أصلًا ما يحتاجه؟</p></div>
+      <div><span class="k">امسح</span><span class="en">ELIMINATE</span><p>وش تسويه أنت ومنافسينك، والعميل أصلًا ما يحتاجه؟</p></div>
       <div><span class="k">قلّل</span><span class="en">REDUCE</span><p>وش تصرف عليه أكثر من اللازم؟</p></div>
       <div><span class="k">ارفع</span><span class="en">RAISE</span><p>وش لازم تكون فيه أقوى من السوق بوضوح؟</p></div>
       <div><span class="k">أنشئ</span><span class="en">CREATE</span><p>وش تقدر تقدّمه وما أحد غيرك يقدّمه؟</p></div>
@@ -217,8 +220,8 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   <section aria-labelledby="h-guide">
     <span class="eyebrow">مجاني</span>
     <h2 id="h-guide">ابدأ بنفسك قبل الجلسة</h2>
-    <p class="lead" style="margin-top:6px">كتيّب مجاني فيه 3 قصص نجاح و4 أسئلة تجاوبها على مشروعك في 20 دقيقة.</p>
-    <div class="ctas"><a class="btn btn-ghost" href="../4-questions.pdf" target="_blank" rel="noopener">حمّل الكتيّب مجانًا (PDF)</a></div>
+    <p class="lead" style="margin-top:6px">ارسم لوحة ERRC لمشروعك بالأداة المجانية في 10 دقايق، وجيبها معك للجلسة.</p>
+    <div class="ctas"><a class="btn btn-dark" href="../errc/">ارسم لوحتك مجانًا ←</a><a class="btn btn-ghost" href="../4-questions.pdf" target="_blank" rel="noopener">أو حمّل كتيّب الأسئلة الأربعة (PDF)</a></div>
   </section>
 
   <section id="prices" aria-labelledby="h-prices">
@@ -243,7 +246,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
         <ul>
           <li>جلسة المفكر الاستراتيجي 60 دقيقة</li>
           <li>لوحة الاستراتيجية مكتوبة ومرسومة</li>
-          <li>لوحة ERRC لمشروعك (امحُ · قلّل · ارفع · أنشئ)</li>
+          <li>لوحة ERRC لمشروعك (امسح · قلّل · ارفع · أنشئ)</li>
           <li>قصة البراند مكتوبة جاهزة للاستخدام</li>
           <li>خطة محتوى 30 يوم مبنية على القصة</li>
           <li>جلسة متابعة 30 دقيقة بعد أسبوعين</li>
@@ -302,7 +305,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="../"><span class="logo" aria-hidden="true">م</span>معمّر · Storytelling &amp; Branding</a>
+    <a class="brand" href="../"><span class="logo"><img src="../avatar-sm.jpg" alt="" width="38" height="38"></span>معمّر · Storytelling &amp; Branding</a>
     <a class="h" href="https://instagram.com/mamer.growth" target="_blank" rel="noopener" dir="ltr">@mamer.growth</a>
   </div>
 </footer>
