@@ -4,46 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>روابط معمّر</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="معمّر | Storytelling & Branding — احجز مكالمة مجانية، جلسة المفكر الاستراتيجي، وكتاب خطة 40 يوم.">
+<meta name="description" content="معمّر | Storytelling & Branding — جلسة المفكر الاستراتيجي، باقة المفكر الاستراتيجي، وكتب مجانية.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
 <style>
-/* Layout: one narrow phone-first column of link cards, identity at top, decision line as the thesis */
 :root{
-  --ink:#0A060D; --panel:#140C1B; --panel-2:#1D1227; --line:#2B2139;
-  --white:#FBF5FC; --soft:#DCBCE8; --muted:#A894B3;
-  --accent:#CC40FA; --edge:#8D16EA; --deep:#6B18BE;
-  --f:"Cairo","Segoe UI",Tahoma,system-ui,sans-serif;
-  color-scheme:dark;
+  /* 60% — خلفية بيج (نفس مسار الخبراء) */
+  --bg:#FAF1E6; --paper:#F4E8DA; --paper-2:#EFE0CF;
+  /* 30% — بنفسجي معمّر الداكن (بدل الكحلي/الأسود) */
+  --plum:#2A1238; --plum-2:#3A1B4D; --text:#1E0F29; --text-2:#5B4A63; --muted:#7D6E83;
+  /* 10% — لون معمّر المميز */
+  --accent:#CC40FA; --accent-ink:#7A12C9; --on-plum:#FAF1E6; --on-plum-soft:#D9C3E6;
+  --line:rgba(42,18,56,.14); --line-2:rgba(42,18,56,.24);
+  --f:"Almarai","Segoe UI",Tahoma,system-ui,sans-serif;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --shadow-sm:0 1px 2px rgba(30,15,41,.04),0 10px 30px -18px rgba(30,15,41,.18);
+  --shadow-lg:0 2px 6px rgba(30,15,41,.05),0 28px 60px -28px rgba(30,15,41,.35);
+  color-scheme:light;
 }
+
 *{box-sizing:border-box}
-body{margin:0;background:var(--ink);color:var(--white);font-family:var(--f);direction:rtl;text-align:right;line-height:1.7;
+body{margin:0;background-color:var(--bg);background-image:var(--noise);color:var(--text);font-family:var(--f);direction:rtl;text-align:right;line-height:1.7;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-main{max-width:480px;margin:0 auto;padding-block:40px 28px;display:flex;flex-direction:column;gap:14px}
-.id{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:10px}
-.mark{width:76px;height:76px;border-radius:22px;background:var(--panel-2);border:1px solid var(--edge);display:grid;place-items:center;font-size:30px;font-weight:900;color:var(--accent)}
-h1{margin:6px 0 0;font-size:1.7rem;font-weight:900;line-height:1.3}
-.sub{font-size:14px;color:var(--soft);direction:ltr}
-.thesis{margin:10px 0 0;font-size:1.05rem;font-weight:800;color:var(--white);text-wrap:balance}
-.thesis span{color:var(--accent)}
-a.card{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px;transition:transform .15s ease,border-color .15s ease}
-a.card:hover{transform:translateY(-2px);border-color:var(--edge)}
+main{max-width:480px;margin:0 auto;padding-block:44px 28px;display:flex;flex-direction:column;gap:14px}
+.id{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-bottom:12px}
+.mark{width:76px;height:76px;border-radius:50%;background:var(--plum);display:grid;place-items:center;font-size:30px;font-weight:800;color:var(--on-plum);box-shadow:var(--shadow-lg);position:relative}
+.mark::after{content:"";position:absolute;inset:6px;border-radius:50%;border:2px solid var(--accent)}
+h1{margin:6px 0 0;font-size:1.9rem;font-weight:800;line-height:1.2;letter-spacing:-.5px}
+.sub{font-size:14px;color:var(--text-2);direction:ltr}
+.thesis{margin:12px 0 0;font-size:1.05rem;font-weight:700;color:var(--text);text-wrap:balance}
+.thesis span{color:var(--accent-ink)}
+a.card{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;background:rgba(244,232,218,.75);border:1px solid var(--line);border-radius:24px;padding:16px 18px;box-shadow:var(--shadow-sm);transition:transform .15s ease,border-color .15s ease}
+a.card:hover{transform:translateY(-2px);border-color:var(--line-2)}
 a.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-a.card.main{background:var(--accent);border-color:var(--accent);color:var(--ink)}
-a.card.main .meta{color:#3a0b52}
+a.card.main{background:var(--plum);border-color:var(--plum);color:var(--on-plum);box-shadow:var(--shadow-lg)}
+a.card.main .meta{color:var(--on-plum-soft)}
+a.card.main .pill{background:var(--accent);color:var(--text)}
 .txt{flex:1;min-width:0}
-.ttl{display:block;font-weight:900;font-size:1.08rem;line-height:1.4}
+.ttl{display:block;font-weight:800;font-size:1.08rem;line-height:1.4}
 .meta{display:block;font-size:13px;color:var(--muted);margin-top:2px}
-.ico{flex:0 0 44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--panel-2);border:1px solid var(--line)}
-a.card.main .ico{background:rgba(10,6,13,.14);border-color:rgba(10,6,13,.2)}
+.ico{flex:0 0 44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2);color:var(--accent-ink)}
+a.card.main .ico{background:rgba(250,241,230,.1);color:var(--accent)}
 .ico svg{width:22px;height:22px}
-.cover{flex:0 0 56px;height:84px;border-radius:8px;object-fit:cover;border:1px solid var(--line)}
-.arrow{flex:0 0 auto;font-size:1.2rem;opacity:.7}
-.label{font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:800;margin:14px 4px 0}
-footer{text-align:center;font-size:12px;color:var(--muted);margin-top:18px}
-footer a{color:var(--soft)}
+.cover{flex:0 0 56px;height:84px;border-radius:10px;object-fit:cover;border:1px solid var(--line)}
+.pill{flex:0 0 auto;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;background:var(--plum);color:var(--on-plum)}
+.arrow{flex:0 0 auto;font-size:1.2rem;opacity:.6}
+.label{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.12em;color:var(--text-2);font-weight:700;margin:16px 4px 0}
+.label::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--accent)}
+footer{text-align:center;font-size:12px;color:var(--muted);margin-top:22px}
+footer a{color:var(--text-2)}
 @media (prefers-reduced-motion:reduce){a.card{transition:none}a.card:hover{transform:none}}
 </style>
 </head>
@@ -53,24 +63,18 @@ footer a{color:var(--soft)}
   <header class="id">
     <div class="mark" aria-hidden="true">م</div>
     <h1>معمّر</h1>
-    <div class="sub">Storytelling &amp; Branding · @mamar.growth</div>
+    <div class="sub">Storytelling &amp; Branding · @mamer.growth</div>
     <p class="thesis">الأعمال سلسلة قرارات، <span>والقرار الذكي يُتعلَّم.</span></p>
   </header>
 
-  <a class="card main" href="https://calendly.com/mamar-growth/20" target="_blank" rel="noopener">
-    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
-    <span class="txt"><span class="ttl">احجز مكالمة اكتشاف مجانية</span><span class="meta">20 دقيقة · Google Meet</span></span>
-    <span class="arrow" aria-hidden="true">←</span>
-  </a>
-
-  <a class="card" href="session/">
-    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#CC40FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
-    <span class="txt"><span class="ttl">جلسة المفكر الاستراتيجي</span><span class="meta">90 دقيقة · تبدأ من 150$</span></span>
-    <span class="arrow" aria-hidden="true">←</span>
+  <a class="card main" href="session/">
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+    <span class="txt"><span class="ttl">جلسة المفكر الاستراتيجي</span><span class="meta">60 دقيقة · تبدأ من 150$</span></span>
+    <span class="pill">احجز</span>
   </a>
 
   <a class="card" href="package/">
-    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#CC40FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></span>
+    <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></span>
     <span class="txt"><span class="ttl">باقة المفكر الاستراتيجي</span><span class="meta">خريطة مشروعك في 24 ساعة · 9$</span></span>
     <span class="arrow" aria-hidden="true">←</span>
   </a>
@@ -87,20 +91,8 @@ footer a{color:var(--soft)}
     <span class="arrow" aria-hidden="true">←</span>
   </a>
 
-  <footer><a href="https://instagram.com/mamar.growth" target="_blank" rel="noopener" dir="ltr">@mamar.growth</a></footer>
+  <footer><a href="https://instagram.com/mamer.growth" target="_blank" rel="noopener" dir="ltr">@mamer.growth</a></footer>
 </main>
 
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>
-(function(){
-  var URL_BOOK = "https://calendly.com/mamar-growth/20?hide_gdpr_banner=1&primary_color=cc40fa";
-  document.querySelectorAll('a[href^="https://calendly.com/mamar-growth/20"]').forEach(function(a){
-    a.addEventListener("click", function(e){
-      if (window.Calendly && Calendly.initPopupWidget) { e.preventDefault(); Calendly.initPopupWidget({url: URL_BOOK}); }
-    });
-  });
-})();
-</script>
 </body>
 </html>
