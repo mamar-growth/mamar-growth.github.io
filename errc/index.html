@@ -480,15 +480,19 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   });
 
 
-  /* ===== إرسال بيانات العميل ===== */
-  var ENDPOINT=""; /* رابط Google Apps Script — يتعبّى بعد الربط */
+  /* ===== إرسال بيانات العميل إلى نموذج Google (الردود تنحفظ في شيت «عملاء لوحة ERRC») ===== */
+  var FORM="https://docs.google.com/forms/d/e/1FAIpQLSffgB-CFZv5mYfwwc_aNz6AMTM4CuSjXEY3kniKByghtncXvg/formResponse";
   function send(){
-    var d={time:new Date().toISOString(),name:$("lname").value.trim(),instagram:$("lig").value.trim(),whatsapp:$("lwa").value.trim(),
-      project:$("name").value.trim(),what:$("what").value.trim(),race:lines("race").join(" | "),
-      eliminate:lines("e").join(" | "),reduce:lines("r").join(" | "),raise:lines("ra").join(" | "),create:lines("c").join(" | "),score:0};
-    try{d.score=analyze(true).score}catch(e){}
-    if(!ENDPOINT)return;
-    try{fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)})}catch(e){}
+    var sc=0;try{sc=analyze(true).score}catch(e){}
+    var j=function(id){return lines(id).join("، ")||"—"};
+    var details=["المشروع: "+($("name").value.trim()||"—"),"وش يبيع ولمين: "+($("what").value.trim()||"—"),"يتنافس السوق على: "+j("race"),
+      "امسح: "+j("e"),"قلّل: "+j("r"),"ارفع: "+j("ra"),"أنشئ: "+j("c"),"المؤشر: "+sc+"/100"].join("\n");
+    var f=new FormData();
+    f.append("entry.1123597041",$("lname").value.trim());
+    f.append("entry.1778105590",$("lig").value.trim());
+    f.append("entry.1157135292",$("lwa").value.trim());
+    f.append("entry.2052753711",details);
+    try{fetch(FORM,{method:"POST",mode:"no-cors",body:f}).catch(function(){})}catch(e){}
   }
 
   /* ===== التحليل ===== */
