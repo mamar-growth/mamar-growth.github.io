@@ -107,6 +107,23 @@ h3{font-size:1.12rem}
 .method p{margin:6px 0 0;color:var(--text-2);font-size:15px}
 .method .out{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--plum)}
 
+/* آراء العملاء */
+.voice-hero{margin:26px 0 0;background:var(--plum);color:var(--on-plum);border-radius:32px;padding:clamp(24px,5vw,40px);box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.voice-hero::before{content:"«";position:absolute;top:-34px;left:22px;font-size:9rem;line-height:1;color:var(--accent);opacity:.22;font-weight:800}
+.voice-hero blockquote{margin:0;font-size:clamp(1.25rem,3vw,1.7rem);font-weight:800;line-height:1.6;position:relative}
+.voice-hero figcaption{margin-top:12px;font-size:13px;color:var(--on-plum-soft)}
+.voices{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.voices>.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.voice{margin:0;background:rgba(244,232,218,.75);border:1px solid var(--line);border-radius:28px;padding:22px 24px;box-shadow:var(--shadow-sm);display:block}
+.voice::before{content:"«";display:block;font-size:2.6rem;line-height:.8;font-weight:800;color:var(--accent-ink);margin-bottom:6px}
+.voice p{margin:0 0 10px;font-size:15.5px;color:var(--text)}
+.voice p:last-child{margin-bottom:0}
+.voice ul{margin:0 0 10px;padding-inline-start:20px;display:grid;gap:8px;font-size:15.5px}
+.voice mark{background:linear-gradient(transparent 55%,rgba(204,64,250,.24) 55%);color:inherit;font-weight:700;padding:0 2px}
+.voice.short{background:var(--paper-2)}
+.voice.short p{font-size:1.08rem;font-weight:700}
+.voices-note{margin:4px 0 0;font-size:13px;color:var(--muted)}
+
 /* العرض */
 .offer{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;margin-top:28px;align-items:start}
 .offer>*{min-width:0}
@@ -185,6 +202,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
 }
 @media (max-width:560px){
   .mirror,.ba,.fit,.pay,.slots,.method,.steps{grid-template-columns:1fr}
+  .voices{grid-template-columns:1fr}
   section{padding-block:44px}
   .ctas .btn{width:100%}
   .top .btn{display:none}
@@ -217,7 +235,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
         <a class="btn btn-primary" href="#offer">احجز مقعدك ←</a>
         <a class="btn btn-ghost" href="#method">وش بيصير في الجلسة؟</a>
       </div>
-      <p class="scarce"><i aria-hidden="true"></i>4 جلسات فقط في الأسبوع، يومين من 8 إلى 10 مساءً بتوقيت مكة</p>
+      <p class="scarce"><i aria-hidden="true"></i>4 جلسات فقط في الأسبوع، الاثنين والخميس من 8 إلى 10 مساءً بتوقيت مكة</p>
     </div>
     <figure class="canvas">
       <div class="cap-top">مثال على خريطة السوق</div>
@@ -292,6 +310,55 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     </ol>
   </section>
 
+  <!-- 4.5 آراء العملاء: بكلامهم حرفيًا، اللقطات الأصلية في «07 — المبيعات/آراء العملاء/» -->
+  <section id="voices" aria-labelledby="h-voices">
+    <span class="eyebrow">آراء العملاء</span>
+    <h2 id="h-voices">وش قالوا بعد ما اشتغلنا مع بعض</h2>
+    <p class="lead" style="margin-top:4px">من رسائلهم لي، بكلامهم بدون أي تعديل.</p>
+
+    <figure class="voice-hero">
+      <blockquote>أنصح وبقوة أي شخص حاب يبدأ أو يطور مشروعه الرقمي إنه يخوض هاي التجربة، لأنها فعلاً تستحق.</blockquote>
+    </figure>
+
+    <div class="voices">
+      <div class="col">
+      <blockquote class="voice">
+        <p>مرحباً،</p>
+        <p>أحب أشارك تقييمي بكل صدق عن تجربتي معك 🌟</p>
+        <p>أنا صاحبة مشروع عبير ديجيتال، وخلال فترة قصيرة جداً (حوالي 35 يوم)، قدرت أنقل صفحتي على الفيسبوك <mark>من 18 متابع فقط إلى ما يقارب ٤٥٠٠ متابع</mark> 👏</p>
+        <p>الاستراتيجية كانت واضحة، عملية، وسهلة التطبيق، والأهم أنها أعطت نتائج حقيقية على أرض الواقع، مش مجرد نظريات.<br>التجربة ما كانت بس أرقام، بل كمان بناء ثقة بنفسي وبمشروعي، وإحساس أني فعلاً على الطريق الصح.</p>
+        <p>أنصح وبقوة أي شخص حاب يبدأ أو يطور مشروعه الرقمي إنه يخوض هاي التجربة، لأنها فعلاً تستحق.</p>
+        <p>شكراً إلك من القلب على الدعم والتوجيه المستمر 🌸</p>
+      </blockquote>
+      <blockquote class="voice">
+        <p>ثقتي فيك ما جات من فراغ، بالعكس هي مبنية على عدة نقاط:</p>
+        <ul>
+          <li>أولاً: أسلوبك كان مختلف عن تجاربي السابقة، فيه وضوح وصراحة، وهذا الشي أعطاني ارتياح إني أبدأ معك.</li>
+          <li>ثانياً: حسيت إنك تركز على النتائج العملية مو مجرد وعود، وهذا اللي خلاني أقتنع إن التعاون معك بيكون مثمر ( <mark>وعدت توصل صفحتي ووصلت</mark>).</li>
+          <li>ثالثاً: رغم إني واجهت مشاكل مع مسوقين قبلك، إلا إن طريقتك بتقديم شغلك أعطتني إحساس بالجدية والالتزام.</li>
+        </ul>
+        <p>والأكثر من هذا كله.... التزامك... اول شي حكيت ما بدك موسيقى... كأنك عارف شو انا بدي.... الا الحرام خط أحمر عندي...<br>تحكيلي بعد الصلاة ببعث الريلز لما كنت تبعتلي باليوم أكثر من واحد</p>
+      </blockquote>
+      </div>
+      <div class="col">
+      <blockquote class="voice">
+        <p>السلام عليكم ورحمة الله وبركاته<br>الحمد لله تمام... أتمنى لك أيضا ان تكون بأفضل حال...<br>أشكرك على رسالتك الطيبة واهتمامك بالتقييم.</p>
+        <p>بصراحة، هذه التجربة كانت مختلفة عن تجاربي السابقة، خاصة من ناحية وضوح الخطة وترتيب الخطوات. وجود استراتيجية واضحة أعطاني شعورًا بالثقة والتنظيم، وهذا بحد ذاته كان مهمًا بالنسبة لي.</p>
+        <p>النتائج التي بدأت تظهر خلال هذه المدة القصيرة مشجعة، خصوصًا من حيث <mark>زيادة الوصول والاستفسارات دون الاعتماد على الإعلانات المدفوعة</mark>، وهذا أمر أقدّره.</p>
+        <p>ما زلت أرى أن الطريق أمامنا يحتاج إلى استمرار وتطوير، لكن كبداية أعتبر التجربة إيجابية، وأتمنى أن نستمر بنفس الالتزام والتركيز لتحقيق نتائج أقوى في المرحلة القادمة.</p>
+        <p>شكرًا لجهودك، وبالتوفيق لنا جميعا... 🤲🏻<br>🤲🏻🤲🏻</p>
+      </blockquote>
+      <blockquote class="voice short">
+        <p>ما شاء الله..... منشورات ممتازة... افضل من الريلز اللي حاليا بنشرها... أقوى</p>
+      </blockquote>
+      <blockquote class="voice short">
+        <p>ما بتقصر الله يسعدك</p>
+        <p>مساعدتك هي اللي خلتني اتخذ إجراءات قوية... وبدها جهد ووقت</p>
+      </blockquote>
+      </div>
+    </div>
+  </section>
+
   <!-- 5. العرض -->
   <section id="offer" aria-labelledby="h-offer">
     <span class="eyebrow">العرض</span>
@@ -348,9 +415,9 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   <section aria-labelledby="h-slots">
     <span class="eyebrow">المواعيد</span>
     <h2 id="h-slots">ليش المقاعد قليلة؟</h2>
-    <p class="lead" style="margin-top:4px">لأن كل جلسة تاخذ مني تحضير قبلها وكتابة بعدها، فأفتح يومين بس في الأسبوع عشان أعطي كل مشروع حقه.</p>
+    <p class="lead" style="margin-top:4px">لأن كل جلسة تاخذ مني تحضير قبلها وكتابة بعدها، فأفتح يومين بس في الأسبوع، الاثنين والخميس، عشان أعطي كل مشروع حقه.</p>
     <div class="slots">
-      <div><b>يومين</b><span>في الأسبوع فقط</span></div>
+      <div><b>الاثنين والخميس</b><span>يومين في الأسبوع فقط</span></div>
       <div><b>8 – 10</b><span>مساءً بتوقيت مكة</span></div>
       <div><b>4 مقاعد</b><span>في الأسبوع كحد أقصى</span></div>
     </div>
@@ -396,7 +463,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     <details><summary>وش الفرق بينها وبين الأداة المجانية؟</summary><p>الأداة تعطيك نظرة أولى بنفسك. الجلسة نبني فيها خريطة سوقك كاملة، ونختار القرارات الصح بالترتيب، ونكتب قصتك وخطتك، وتطلع بملفات جاهزة للتطبيق.</p></details>
     <details><summary>مشروعي صغير أو لسا فكرة، تنفعني؟</summary><p>إيه، وهذا أفضل وقت. لأنك تختار مكانك في السوق قبل ما تصرف على الغلط.</p></details>
     <details><summary>ما عندي Binance، أقدر أدفع؟</summary><p>إيه. عندي طرق دفع بديلة، راسلني على إنستغرام ونحدد الأنسب لك.</p></details>
-    <details><summary>متى المواعيد بالضبط؟</summary><p>يومين في الأسبوع، من 8 إلى 10 مساءً بتوقيت مكة، على Google Meet. بعد الدفع يوصلك رابط فيه المواعيد المتاحة وتختار منها.</p></details>
+    <details><summary>متى المواعيد بالضبط؟</summary><p>الاثنين والخميس، مقعدين في كل يوم: من 8 إلى 9 ومن 9 إلى 10 مساءً بتوقيت مكة، على Google Meet. بعد الدفع يوصلك رابط فيه المواعيد المتاحة وتختار منها.</p></details>
   </section>
 
   <!-- 11. الدعوة الأخيرة -->
