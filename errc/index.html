@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>لوحة ERRC — أداة مجانية من معمّر</title>
-<meta name="description" content="أداة مجانية: ارسم لوحة ERRC لمشروعك في 10 دقايق — امسح، قلّل، ارفع، أنشئ — وطلّع مشروعك من المنافسة.">
+<title>لوحة الاستكشاف — أداة مجانية من معمّر</title>
+<meta name="description" content="أداة مجانية من معمّر: ارسم لوحة الاستكشاف لمشروعك في 10 دقايق، واعرف وين واقف ووش تحتاج، وخذ خطة أسبوع تبدأ فيها من بكرة.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
@@ -73,7 +73,7 @@ h2{font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.6px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .cell{border:1.5px solid rgba(250,241,230,.28);border-radius:18px;padding:14px;min-height:118px;transition:border-color .3s ease,box-shadow .3s ease;min-width:0}
 .cell .w{font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.cell .w small{font-size:10px;letter-spacing:.14em;color:var(--on-plum-soft);font-weight:700;direction:ltr}
+.cell .w small{font-size:11px;color:var(--on-plum-soft);font-weight:700}
 .cell ul{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px}
 .cell li{font-size:13.5px;color:var(--on-plum-soft);line-height:1.6;overflow-wrap:anywhere}
 .cell li::before{content:"• ";color:var(--accent)}
@@ -90,7 +90,7 @@ h2{font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.6px}
 .progress button.cur{color:var(--accent-ink);border-top-color:var(--accent)}
 .step-n{font-size:2.4rem;font-weight:800;color:var(--accent-ink);letter-spacing:-1px;line-height:1}
 .step-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 4px}
-.step-h .en{direction:ltr;font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:700}
+.step-h .stage{font-size:12px;font-weight:700;color:var(--accent-ink);border:1px solid var(--line-2);border-radius:999px;padding:3px 12px}
 .q{font-size:1.15rem;font-weight:700;margin:14px 0 4px}
 .why{color:var(--text-2);font-size:15px;margin:0}
 .ex{margin-top:16px;background:var(--plum);color:var(--on-plum-soft);border-radius:20px;padding:14px 18px;font-size:14.5px}
@@ -140,6 +140,46 @@ textarea{min-height:120px;resize:vertical;line-height:1.8}
 .ins p b{color:var(--text)}
 .ins.key p b{color:var(--on-plum)}
 .honest2{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.diag{font-size:1.1rem;color:var(--text-2);margin:12px 0 0;max-width:62ch}
+.sub-h{grid-column:1/-1;margin-top:18px}
+
+/* الخطة */
+.plans{grid-column:1/-1;display:grid;gap:16px;margin-top:18px;scroll-margin-top:90px}
+.week{background:rgba(244,232,218,.75);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,4vw,30px);box-shadow:var(--shadow-sm);scroll-margin-top:90px}
+.week.new{animation:rise .5s ease}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.week .wk{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.week .wk b{background:var(--plum);color:var(--on-plum);border-radius:999px;padding:4px 14px;font-size:13px}
+.week .wk span{font-size:13px;font-weight:700;color:var(--accent-ink)}
+.week h3{font-size:1.25rem;margin:10px 0 4px}
+.week .goal{color:var(--text-2);font-size:15px;margin:0 0 14px}
+.days{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.days>li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:rgba(250,241,230,.7);border:1px solid var(--line);border-radius:20px;padding:14px 16px}
+.days .d{font-size:12px;font-weight:800;color:var(--on-plum);background:var(--plum);border-radius:12px;padding:4px 10px;white-space:nowrap;margin-top:3px}
+.db{min-width:0}
+.db h4{margin:0 0 8px;font-size:1.05rem;font-weight:800;line-height:1.5;overflow-wrap:anywhere}
+.db h4 b,.checks b{color:var(--accent-ink)}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:15px;color:var(--text-2);overflow-wrap:anywhere}
+.checks input{width:18px;height:18px;margin:5px 0 0;accent-color:var(--accent-ink);flex:0 0 auto;cursor:pointer}
+.checks input:checked+span{text-decoration:line-through;text-decoration-color:var(--accent);color:var(--muted)}
+.aid{margin-top:10px;background:var(--plum);color:var(--on-plum);border-radius:16px;padding:10px 14px}
+.aid summary{font-size:14px;font-weight:700;cursor:pointer}
+.aid summary::marker{color:var(--accent)}
+.aid pre{white-space:pre-wrap;font-family:var(--f);font-size:14.5px;line-height:1.8;color:var(--on-plum-soft);margin:10px 0;background:rgba(250,241,230,.06);border-radius:12px;padding:10px 12px;overflow-wrap:anywhere;direction:rtl;text-align:right}
+.aid .cp{min-height:38px;padding:6px 18px;font-size:14px;color:var(--on-plum);border-color:rgba(250,241,230,.3);background:transparent}
+.wnote{background:var(--paper-2);border-radius:14px;padding:10px 14px;font-size:14.5px;margin:0 0 14px;color:var(--text)}
+.wprog{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:14px;font-weight:700;color:var(--plum);flex-wrap:wrap}
+.bar2{flex:1 1 160px;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar2 i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .4s ease}
+.more{display:grid;justify-items:start;gap:4px}
+.more .hint{margin:0}
+.cta-month{background:var(--plum);color:var(--on-plum);border-radius:32px;padding:clamp(24px,5vw,40px);box-shadow:var(--shadow-lg);scroll-margin-top:90px}
+.cta-month .eyebrow{color:var(--on-plum-soft)}
+.cta-month h3{font-size:clamp(1.4rem,3.2vw,1.9rem)}
+.cta-month p{color:var(--on-plum-soft);font-size:15.5px;margin:10px 0 20px;max-width:60ch}
+.cta-month ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:6px;color:var(--on-plum-soft);font-size:15px}
+.cta-month li::before{content:"✓ ";color:var(--accent);font-weight:800}
 @media (max-width:820px){.insights,.ins-list{grid-template-columns:1fr}}
 
 .result{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start}
@@ -168,6 +208,9 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   .ctas .btn,.nav .btn{width:100%}
   .progress button{font-size:11px}
   .four{grid-template-columns:1fr}
+  .more .btn,.cta-month .btn{width:100%}
+  .days>li{grid-template-columns:1fr}
+  .days .d{justify-self:start}
 }
 @media (prefers-reduced-motion:reduce){.btn,.cell{transition:none}.btn:hover{transform:none}}
 @media print{
@@ -189,35 +232,35 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
 <main class="wrap">
   <section class="hero" aria-labelledby="h-hero">
     <div>
-      <span class="eyebrow">لوحة ERRC · 10 دقايق</span>
-      <h1 id="h-hero">أربع كلمات <span class="hl">تطلّع مشروعك من المنافسة.</span></h1>
-      <p class="lead">امسح، قلّل، ارفع، أنشئ. الأداة اللي أفتحها قبل ما أكتب أي خطة، من كتاب «استراتيجية المحيط الأزرق». جاوب على أربع أسئلة، وتطلع لك لوحة مشروعك جاهزة تحفظها صورة.</p>
+      <span class="eyebrow">لوحة الاستكشاف · 10 دقايق</span>
+      <h1 id="h-hero">اكتشف وين واقف مشروعك، <span class="hl">ووش يطلّعه من المنافسة.</span></h1>
+      <p class="lead">نفس أول خطوات جلسة المفكر الاستراتيجي، بين يدينك: تشخّص سوقك، وتعيد توزيع جهدك، وتبني ميزتك. جاوب على أسئلة قصيرة، وتطلع لك لوحة مشروعك، ووين واقف، ووش تحتاج، وخطة أسبوع تبدأ فيها من بكرة.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="#tool">ابدأ لوحتك ←</a>
-        <a class="btn btn-ghost" href="#how">وش هي لوحة ERRC؟</a>
+        <a class="btn btn-ghost" href="#how">وش هي لوحة الاستكشاف؟</a>
       </div>
-      <p class="note">مجانية بالكامل · ما تحتاج تسجيل · إجاباتك تنحفظ في جهازك بس</p>
+      <p class="note">مجانية بالكامل · ما تحتاج حساب · 10 دقايق</p>
     </div>
-    <figure class="board" style="margin:0" aria-label="مثال على لوحة ERRC">
+    <figure class="board" style="margin:0" aria-label="مثال على لوحة الاستكشاف">
       <div class="cap">مثال · حساب ينزّل نصيحة كل يوم</div>
-      <div class="bt">لوحة ERRC</div>
+      <div class="bt">لوحة الاستكشاف</div>
       <div class="grid">
-        <div class="cell"><div class="w">امسح <small>ELIMINATE</small></div><ul><li>النصيحة اللي ما وراها قصة</li></ul></div>
-        <div class="cell"><div class="w">قلّل <small>REDUCE</small></div><ul><li>3 منشورات سريعة ← منشور واحد أعمق</li></ul></div>
-        <div class="cell"><div class="w">ارفع <small>RAISE</small></div><ul><li>قصة عميقة ومصدر موثوق</li></ul></div>
-        <div class="cell on"><div class="w">أنشئ <small>CREATE</small></div><ul><li>كل منشور يخلّص بخطوة تطبقها</li></ul></div>
+        <div class="cell"><div class="w">الحمل الزايد <small>01</small></div><ul><li>النصيحة اللي ما وراها قصة</li></ul></div>
+        <div class="cell"><div class="w">الجهد المهدور <small>02</small></div><ul><li>3 منشورات سريعة ← منشور واحد أعمق</li></ul></div>
+        <div class="cell"><div class="w">نقطة القوة <small>03</small></div><ul><li>قصة عميقة ومصدر موثوق</li></ul></div>
+        <div class="cell on"><div class="w">البصمة <small>04</small></div><ul><li>كل منشور يخلّص بخطوة تطبقها</li></ul></div>
       </div>
     </figure>
   </section>
 
-  <section id="tool" class="tool" aria-label="أداة لوحة ERRC">
+  <section id="tool" class="tool" aria-label="أداة لوحة الاستكشاف">
     <div class="panel" id="wizard">
       <div class="progress" role="tablist" aria-label="خطوات اللوحة" id="prog"></div>
 
       <!-- الخطوة 0 -->
       <div class="step" data-step="0">
         <div class="step-n">00</div>
-        <div class="step-h"><h2>عرّفني على مشروعك</h2></div>
+        <div class="step-h"><h2>عرّفني على مشروعك</h2><span class="stage">تشخيص السوق</span></div>
         <p class="why">جملتين بس. كل ما كنت أوضح، طلعت لوحتك أدق.</p>
         <label class="l" for="name">اسم مشروعك أو حسابك</label>
         <input type="text" id="name" maxlength="60" placeholder="مثال: مقهى الزاوية، أو @youraccount">
@@ -230,56 +273,56 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
         <textarea id="race" style="min-height:70px;margin-top:10px" placeholder="اختر من فوق أو اكتب بنفسك"></textarea>
       </div>
 
-      <!-- خطوات ERRC -->
+      <!-- خانات اللوحة -->
       <div class="step" data-step="1" hidden>
         <div class="step-n">01</div>
-        <div class="step-h"><h2>امسح</h2><span class="en">ELIMINATE</span></div>
+        <div class="step-h"><h2>الحمل الزايد</h2><span class="stage">إعادة توزيع الجهد</span></div>
         <p class="q">وش يسويه الكل في سوقك، والعميل أصلًا ما يحتاجه؟</p>
         <p class="why">أشياء تتعب عليها لأن «الكل يسويها»، مو لأن عميلك يدفع عشانها.</p>
-        <div class="ex"><b>مثال:</b> حساب ينزّل نصيحة سريعة كل يوم؟ أول شي أمسحه: النصيحة اللي ما وراها قصة.</div>
+        <div class="ex"><b>مثال:</b> حساب ينزّل نصيحة سريعة كل يوم؟ أول حمل زايد يشيله: النصيحة اللي ما وراها قصة.</div>
         <label class="l" for="e">اكتب كل شي في سطر</label>
         <div class="chips" data-target="e"><button type="button" class="chip">الخصومات المستمرة</button><button type="button" class="chip">نصايح عامة بلا قصة</button><button type="button" class="chip">تقليد المنافسين</button><button type="button" class="chip">خدمات ما أحد يطلبها</button><button type="button" class="chip">النشر لمجرد النشر</button></div>
-        <textarea id="e" placeholder="سطر لكل شي تبي تمسحه"></textarea>
+        <textarea id="e" placeholder="سطر لكل شي تبي تشيله"></textarea>
         <p class="hint">من شي واحد إلى ثلاثة يكفي.</p>
       </div>
 
       <div class="step" data-step="2" hidden>
         <div class="step-n">02</div>
-        <div class="step-h"><h2>قلّل</h2><span class="en">REDUCE</span></div>
+        <div class="step-h"><h2>الجهد المهدور</h2><span class="stage">إعادة توزيع الجهد</span></div>
         <p class="q">وش تصرف عليه وقت أو فلوس أكثر من اللازم؟</p>
-        <p class="why">ما تمسحه كله، بس تنزّله تحت مستوى السوق. التعب اللي ما يجيب نتيجة.</p>
+        <p class="why">ما توقفه كله، بس تنزّله لمستوى «يكفي». التعب اللي ما يجيب نتيجة.</p>
         <div class="ex"><b>مثال:</b> بدل ثلاث منشورات سريعة كل يوم، خلّها منشور واحد أعمق.</div>
         <label class="l" for="r">اكتب كل شي في سطر</label>
         <div class="chips" data-target="r"><button type="button" class="chip">عدد المنشورات اليومية</button><button type="button" class="chip">الإعلانات العشوائية</button><button type="button" class="chip">الخيارات الكثيرة اللي تحيّر العميل</button><button type="button" class="chip">الردود اليدوية</button><button type="button" class="chip">الكلام عن المنتج نفسه</button></div>
-        <textarea id="r" placeholder="سطر لكل شي تبي تقلّله"></textarea>
+        <textarea id="r" placeholder="سطر لكل شي تبي تخففه"></textarea>
       </div>
 
       <div class="step" data-step="3" hidden>
         <div class="step-n">03</div>
-        <div class="step-h"><h2>ارفع</h2><span class="en">RAISE</span></div>
+        <div class="step-h"><h2>نقطة القوة</h2><span class="stage">بناء الميزة</span></div>
         <p class="q">وش لازم تكون فيه أقوى من السوق بوضوح؟</p>
         <p class="why">الشي اللي عميلك يتمناه ومحد معطيه حقه. هنا يبدأ التميّز.</p>
-        <div class="ex"><b>مثال:</b> ارفع اللي يفرّقك عن غيرك: قصة عميقة ومصدر موثوق.</div>
+        <div class="ex"><b>مثال:</b> نقطة قوته اللي تفرّقه عن غيره: قصة عميقة ومصدر موثوق.</div>
         <label class="l" for="ra">اكتب كل شي في سطر</label>
         <div class="chips" data-target="ra"><button type="button" class="chip">القصة ورا المشروع</button><button type="button" class="chip">الثقة والمصادر</button><button type="button" class="chip">تجربة العميل بعد الشراء</button><button type="button" class="chip">سرعة الرد</button><button type="button" class="chip">عمق المحتوى</button></div>
-        <textarea id="ra" placeholder="سطر لكل شي تبي ترفعه"></textarea>
+        <textarea id="ra" placeholder="سطر لكل شي تبي تقوّيه"></textarea>
       </div>
 
       <div class="step" data-step="4" hidden>
         <div class="step-n">04</div>
-        <div class="step-h"><h2>أنشئ</h2><span class="en">CREATE</span></div>
+        <div class="step-h"><h2>البصمة</h2><span class="stage">بناء الميزة</span></div>
         <p class="q">وش تقدر تقدّمه وما أحد غيرك يقدّمه؟</p>
         <p class="why">أهم خانة في اللوحة. شي جديد يخليك خارج المقارنة بالكامل.</p>
-        <div class="ex"><b>مثال:</b> سوّ شي جديد ما سواه أحد: كل منشور يخلّص بخطوة تطبقها على مشروعك.</div>
+        <div class="ex"><b>مثال:</b> بصمته اللي ما سواها أحد: كل منشور يخلّص بخطوة تطبقها على مشروعك.</div>
         <label class="l" for="c">اكتب كل شي في سطر</label>
         <div class="chips" data-target="c"><button type="button" class="chip">خطوة عملية آخر كل منشور</button><button type="button" class="chip">ضمان ما يقدمه أحد</button><button type="button" class="chip">مجتمع لعملائك</button><button type="button" class="chip">أداة مجانية تحل مشكلة</button><button type="button" class="chip">سلسلة قصص موثقة</button></div>
-        <textarea id="c" placeholder="سطر لكل شي تبي تنشئه"></textarea>
+        <textarea id="c" placeholder="سطر لكل شي جديد تبي تقدّمه"></textarea>
       </div>
 
       <div class="step" data-step="5" hidden>
         <div class="step-n">05</div>
-        <div class="step-h"><h2>تحليل لوحتك جاهز</h2></div>
-        <p class="why">قبل ما أعرضه لك: وين أقدر أتواصل معك لو عندي ملاحظة على لوحتك؟</p>
+        <div class="step-h"><h2>نتيجتك جاهزة</h2><span class="stage">القصة والخطة</span></div>
+        <p class="why">قبل ما أعرض لك وين واقف وخطة أسبوعك: وين أقدر أتواصل معك لو عندي ملاحظة على لوحتك؟</p>
         <label class="l" for="lname">اسمك</label>
         <input type="text" id="lname" maxlength="60" autocomplete="name" placeholder="مثال: عبدالله">
         <div class="err" id="e-lname">اكتب اسمك</div>
@@ -291,7 +334,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
         <p class="hint">بياناتك تروح لمعمّر بس، وما تنشارك مع أي أحد.</p>
       </div>
 
-      <div class="warn" id="warn" hidden><b>انتبه للخطأ الأشهر:</b> توقف عند المسح. تمسح وتقلّل، وتنسى ترفع وتنشئ، ويطلع مشروعك مرتب بس ما يفرّقه شي عن غيره. عبّ خانة <span id="warn-which"></span> قبل ما تكمل.</div>
+      <div class="warn" id="warn" hidden><b>انتبه للخطأ الأشهر:</b> توقف عند الترتيب. تشيل الحمل الزايد وتخفف الجهد المهدور، وتنسى نقطة القوة والبصمة، ويطلع مشروعك مرتب بس ما يفرّقه شي عن غيره. عبّ خانة <span id="warn-which"></span> قبل ما تكمل.</div>
       <div class="nav">
         <button type="button" class="btn btn-ghost" id="back">→ رجوع</button>
         <button type="button" class="btn btn-dark" id="next">التالي ←</button>
@@ -302,12 +345,12 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     <div class="result" id="result" hidden>
       <figure class="board" style="margin:0" id="final">
         <div class="cap" id="f-what"></div>
-        <div class="bt" id="f-name">لوحة ERRC</div>
+        <div class="bt" id="f-name">لوحة الاستكشاف</div>
         <div class="grid">
-          <div class="cell on"><div class="w">امسح <small>ELIMINATE</small></div><ul id="f-e"></ul></div>
-          <div class="cell on"><div class="w">قلّل <small>REDUCE</small></div><ul id="f-r"></ul></div>
-          <div class="cell on"><div class="w">ارفع <small>RAISE</small></div><ul id="f-ra"></ul></div>
-          <div class="cell on"><div class="w">أنشئ <small>CREATE</small></div><ul id="f-c"></ul></div>
+          <div class="cell on"><div class="w">الحمل الزايد <small>01</small></div><ul id="f-e"></ul></div>
+          <div class="cell on"><div class="w">الجهد المهدور <small>02</small></div><ul id="f-r"></ul></div>
+          <div class="cell on"><div class="w">نقطة القوة <small>03</small></div><ul id="f-ra"></ul></div>
+          <div class="cell on"><div class="w">البصمة <small>04</small></div><ul id="f-c"></ul></div>
         </div>
       </figure>
       <div class="actions">
@@ -318,15 +361,15 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
         <button type="button" class="btn btn-ghost" id="edit">عدّل إجاباتك</button>
         <div class="toast" id="toast" aria-live="polite"></div>
         <div class="cta-card">
-          <h3>اللوحة تقول لك «وش». الجلسة تقول لك «كيف».</h3>
-          <p>في 60 دقيقة نرسم لوحة الاستراتيجية لمشروعك، ونحوّل لوحة ERRC هذي لقصة براند وخطة تنفذها.</p>
-          <a class="btn btn-primary" href="../session/" style="width:100%">احجز جلسة المفكر الاستراتيجي ←</a>
+          <h3>تحت لوحتك: وين واقف، ووش تحتاج، وخطة أسبوعك الأول.</h3>
+          <p>الخطة مبنية من إجاباتك أنت، يوم بيوم، وتبدأ فيها من بكرة.</p>
+          <a class="btn btn-primary" href="#plan" style="width:100%">اعرض خطتي ↓</a>
         </div>
       </div>
     </div>
 
     <div class="insights" id="insights" hidden aria-labelledby="h-ins">
-      <div style="grid-column:1/-1"><span class="eyebrow">تحليل لوحتك</span><h2 id="h-ins">وش تقول لوحتك عن مشروعك؟</h2></div>
+      <div style="grid-column:1/-1"><span class="eyebrow">وين واقف</span><h2 id="h-ins">وين واقف مشروعك اليوم؟</h2><p class="diag" id="diag"></p></div>
       <div class="score">
         <div class="cap">مؤشر الخروج من المنافسة</div>
         <div class="num"><span id="sc">0</span><small>/100</small></div>
@@ -340,20 +383,43 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
         <svg id="vc" viewBox="0 0 560 300" role="img" aria-label="منحنى القيمة: مشروعك مقابل السوق" style="width:100%;height:auto;display:block"></svg>
         <div class="legend2"><span><i style="background:#CC40FA"></i>مشروعك بعد اللوحة</span><span><i style="background:#7D6E83"></i>السوق اليوم</span></div>
       </div>
+      <div class="sub-h"><span class="eyebrow">وش تحتاج</span><h2>اللي يحتاجه مشروعك قبل أي شي ثاني</h2></div>
       <div class="ins-list" id="ins-list"></div>
       <p class="honest2">التحليل مبني على إجاباتك أنت بقواعد منهج المحيط الأزرق، مو تخمين. كل ما كانت إجاباتك أوضح، كان التحليل أدق.</p>
+
+      <div class="plans" id="plan">
+        <div><span class="eyebrow">خطتك</span><h2>خطة أسبوعك الأول</h2><p class="diag" style="margin-top:8px">مبنية من إجاباتك أنت. كل يوم فيه خطوات تعلّم عليها، ومساعدة جاهزة تنسخها.</p></div>
+        <article class="week" id="w1"></article>
+        <div class="more" id="more">
+          <button type="button" class="btn btn-dark" id="gen2">ولّد خطة الأسبوع الثاني ←</button>
+          <p class="hint" id="more-hint">خطة نشر وتسويق تكمل على أسبوعك الأول: كل يوم منشور، وخطوة توصّلك لعملاء.</p>
+        </div>
+        <article class="week" id="w2" hidden></article>
+        <div class="cta-month" id="cta-month" hidden>
+          <span class="eyebrow">الخطوة الجاية</span>
+          <h3>تبي خطة شهرية متكاملة؟</h3>
+          <p>الأسبوعين هذي بداية الطريق. في جلسة المفكر الاستراتيجي نكمل اللي بديته هنا، ونطلع بـ:</p>
+          <ul>
+            <li>خريطة سوقك كاملة، وين مكانك ووين الفراغ</li>
+            <li>قصة البراند مكتوبة وجاهزة</li>
+            <li>خطة 30 يوم مرتبة أسبوع بأسبوع</li>
+            <li>جلسة متابعة بعد أسبوعين</li>
+          </ul>
+          <a class="btn btn-primary" href="../session/">احجز استشارتك ←</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="how" id="how" aria-labelledby="h-how">
-    <span class="eyebrow">وش هي لوحة ERRC؟</span>
-    <h2 id="h-how">من «استراتيجية المحيط الأزرق»، بأربع كلمات</h2>
-    <p class="lead">بدل ما تنافس على نفس الأشياء اللي ينافس عليها الكل، تعيد ترتيبها: وش تشيل، ووش تخفف، ووش تقوّي، ووش تضيف جديد.</p>
+    <span class="eyebrow">وش هي لوحة الاستكشاف؟</span>
+    <h2 id="h-how">أول نظرة على مشروعك، بنفس منهج الجلسة</h2>
+    <p class="lead">مبنية على منهج «استراتيجية المحيط الأزرق». بدل ما تنافس على نفس الأشياء اللي ينافس عليها الكل، تعيد ترتيبها: وش تشيل، ووش تخفف، ووش تقوّي، ووش تضيف جديد. وهي نفس أول مراحل جلسة المفكر الاستراتيجي.</p>
     <div class="four">
-      <div><b>امسح</b><p>اللي يسويه الكل وما ينفعك.</p></div>
-      <div><b>قلّل</b><p>الجهد اللي ما يجيب نتيجة.</p></div>
-      <div><b>ارفع</b><p>اللي يفرّقك فوق مستوى المجال.</p></div>
-      <div><b>أنشئ</b><p>اللي ما سواه أحد قبلك.</p></div>
+      <div><b>الحمل الزايد</b><p>اللي يسويه الكل وما ينفعك.</p></div>
+      <div><b>الجهد المهدور</b><p>التعب اللي ما يجيب نتيجة.</p></div>
+      <div><b>نقطة القوة</b><p>اللي يفرّقك فوق مستوى المجال.</p></div>
+      <div><b>البصمة</b><p>اللي ما سواه أحد قبلك.</p></div>
     </div>
   </section>
 </main>
@@ -370,7 +436,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   var $=function(id){return document.getElementById(id)};
   var KEY="mamer-errc-v1";
   var FIELDS=["name","what","race","e","r","ra","c","lname","lig","lwa"];
-  var LABELS=["مشروعك","امسح","قلّل","ارفع","أنشئ","تحليلك"];
+  var LABELS=["مشروعك","الحمل الزايد","الجهد المهدور","نقطة القوة","البصمة","نتيجتك"];
   var steps=[].slice.call(document.querySelectorAll(".step"));
   var cur=0;
 
@@ -408,10 +474,10 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   }
   $("back").addEventListener("click",function(){go(cur-1);$("wizard").scrollIntoView({behavior:"smooth",block:"start"})});
   $("next").addEventListener("click",function(){
-    if(cur===4){var m=[];if(!lines("ra").length)m.push("«ارفع»");if(!lines("c").length)m.push("«أنشئ»");
+    if(cur===4){var m=[];if(!lines("ra").length)m.push("«نقطة القوة»");if(!lines("c").length)m.push("«البصمة»");
       if(m.length){$("warn-which").textContent=m.join(" و");$("warn").hidden=false;if(!lines("ra").length)go(3);return}}
     if(cur<steps.length-1){go(cur+1);$("wizard").scrollIntoView({behavior:"smooth",block:"start"});return}
-    var miss=[];if(!lines("ra").length)miss.push("«ارفع»");if(!lines("c").length)miss.push("«أنشئ»");
+    var miss=[];if(!lines("ra").length)miss.push("«نقطة القوة»");if(!lines("c").length)miss.push("«البصمة»");
     if(miss.length){$("warn-which").textContent=miss.join(" و");$("warn").hidden=false;go(!lines("ra").length?3:4);return}
     var bad=false;["lname","lig"].forEach(function(id){var e=$("e-"+id);var ok=!!$(id).value.trim();e.classList.toggle("show",!ok);if(!ok&&!bad){$(id).focus();bad=true}});
     if(bad)return;
@@ -421,10 +487,10 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   function fill(id,arr){var ul=$(id);ul.innerHTML="";(arr.length?arr:["—"]).forEach(function(t){var li=document.createElement("li");li.textContent=t;ul.appendChild(li)})}
   function show(){
     var name=$("name").value.trim();
-    $("f-name").textContent=name?("لوحة ERRC · "+name):"لوحة ERRC";
+    $("f-name").textContent=name?("لوحة الاستكشاف · "+name):"لوحة الاستكشاف";
     $("f-what").textContent=$("what").value.trim()||"مشروعي";
     fill("f-e",lines("e"));fill("f-r",lines("r"));fill("f-ra",lines("ra"));fill("f-c",lines("c"));
-    $("wizard").hidden=true;$("result").hidden=false;$("insights").hidden=false;analyze();
+    $("wizard").hidden=true;$("result").hidden=false;$("insights").hidden=false;analyze();renderWeek(week1(ctx0()));LASTW2=null;$("gen2").textContent="ولّد خطة الأسبوع الثاني ←";$("w2").hidden=true;$("w2").innerHTML="";$("more").hidden=false;$("cta-month").hidden=true;
     $("result").scrollIntoView({behavior:"smooth",block:"start"});
   }
   $("edit").addEventListener("click",function(){$("result").hidden=true;$("insights").hidden=true;$("wizard").hidden=false;go(1);$("wizard").scrollIntoView({behavior:"smooth",block:"start"})});
@@ -433,7 +499,11 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   function asText(){
     var name=$("name").value.trim()||"مشروعي";
     var b=function(h,id){return h+":\n"+(lines(id).map(function(s){return "• "+s}).join("\n")||"—")};
-    return ["لوحة ERRC · "+name,$("what").value.trim(),"",b("امسح",'e'),"",b("قلّل",'r'),"",b("ارفع",'ra'),"",b("أنشئ",'c'),"","— من أداة معمّر المجانية: mamar-growth.github.io/errc"].join("\n");
+    var pl=function(P){return P.tag+" · "+P.stage+":\n"+P.days.map(function(d){return "• "+d.d+" — "+strip(d.t)+"\n"+d.s.map(function(x){return "   - "+strip(x)}).join("\n")}).join("\n")};
+    var out=["لوحة الاستكشاف · "+name,$("what").value.trim(),"",b("الحمل الزايد",'e'),"",b("الجهد المهدور",'r'),"",b("نقطة القوة",'ra'),"",b("البصمة",'c'),"",pl(week1(ctx0()))];
+    if(!$("w2").hidden&&LASTW2)out.push("",pl(LASTW2));
+    out.push("","— من أداة معمّر المجانية: mamar-growth.github.io/errc");
+    return out.join("\n");
   }
   $("copy").addEventListener("click",function(){
     var t=asText();
@@ -454,8 +524,8 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
       ctx.fillStyle="#2A1238";ctx.fillRect(0,0,W,H);
       var F="Almarai, sans-serif";
       ctx.fillStyle="#D9C3E6";ctx.font="700 30px "+F;ctx.fillText(($("what").value.trim()||"مشروعي").slice(0,70),W-70,110);
-      ctx.fillStyle="#FAF1E6";ctx.font="800 64px "+F;ctx.fillText(("لوحة ERRC"+($("name").value.trim()?" · "+$("name").value.trim():"")).slice(0,34),W-70,190);
-      var cells=[["امسح","e"],["قلّل","r"],["ارفع","ra"],["أنشئ","c"]];
+      ctx.fillStyle="#FAF1E6";ctx.font="800 64px "+F;ctx.fillText(("لوحة الاستكشاف"+($("name").value.trim()?" · "+$("name").value.trim():"")).slice(0,34),W-70,190);
+      var cells=[["الحمل الزايد","e"],["الجهد المهدور","r"],["نقطة القوة","ra"],["البصمة","c"]];
       var gx=70,gy=250,gap=24,cw=(W-140-gap)/2,ch=(H-gy-150-gap)/2;
       cells.forEach(function(c,i){
         var col=i%2,row=Math.floor(i/2);
@@ -472,7 +542,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
       ctx.textAlign="right";ctx.direction="rtl";ctx.fillStyle="#D9C3E6";ctx.font="400 26px "+F;ctx.fillText("أداة مجانية من معمّر",W-70,H-70);
       cv.toBlob(function(b){
         if(!b){toast("ما قدرت أحفظ الصورة");return}
-        var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="لوحة-ERRC.png";document.body.appendChild(a);a.click();a.remove();
+        var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="لوحة-الاستكشاف.png";document.body.appendChild(a);a.click();a.remove();
         setTimeout(function(){URL.revokeObjectURL(a.href)},2000);toast("انحفظت الصورة ✓");
       },"image/png");
     };
@@ -483,10 +553,11 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
   /* ===== إرسال بيانات العميل إلى نموذج Google (الردود تنحفظ في شيت «عملاء لوحة ERRC») ===== */
   var FORM="https://docs.google.com/forms/d/e/1FAIpQLSffgB-CFZv5mYfwwc_aNz6AMTM4CuSjXEY3kniKByghtncXvg/formResponse";
   function send(){
-    var sc=0;try{sc=analyze(true).score}catch(e){}
+    var A={score:0,lvl:"—",gap:"—",first:"—"};try{A=analyze(true)}catch(e){}
     var j=function(id){return lines(id).join("، ")||"—"};
     var details=["المشروع: "+($("name").value.trim()||"—"),"وش يبيع ولمين: "+($("what").value.trim()||"—"),"يتنافس السوق على: "+j("race"),
-      "امسح: "+j("e"),"قلّل: "+j("r"),"ارفع: "+j("ra"),"أنشئ: "+j("c"),"المؤشر: "+sc+"/100"].join("\n");
+      "الحمل الزايد: "+j("e"),"الجهد المهدور: "+j("r"),"نقطة القوة: "+j("ra"),"البصمة: "+j("c"),
+      "وين واقف: "+A.lvl+" ("+A.score+"/100)","أكبر فجوة: "+A.gap,"أول خطوة في خطته: "+A.first].join("\n");
     var f=new FormData();
     f.append("entry.1123597041",$("lname").value.trim());
     f.append("entry.1778105590",$("lig").value.trim());
@@ -510,7 +581,7 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     var p1=race.length?Math.round(30*handled.length/Math.max(race.length,2)):10;
     // 2) توازن الشيل والإضافة
     var p2=(cut.length&&add.length)?(Math.abs(cut.length-add.length)<=2?25:16):5;
-    // 3) أصالة «أنشئ»
+    // 3) أصالة «البصمة»
     var own=C.filter(function(t){return SUGG.indexOf(t)<0});
     var p3=C.length?(own.length?25:12):0;
     // 4) الوضوح
@@ -518,11 +589,24 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     var ownAll=all.filter(function(t){return SUGG.indexOf(t)<0}).length;
     var p4=Math.min(20,Math.round((avg>=14?10:avg/1.4)+(all.length?10*ownAll/all.length:0)));
     var score=Math.max(0,Math.min(100,p1+p2+p3+p4));
-    if(quiet)return {score:score};
     var lvl=score>=80?"محيط أزرق واضح":score>=60?"قريب من الخروج":score>=40?"بداية الطريق":"لسا في المحيط الأحمر";
-    $("sc").textContent=score;$("sc-lvl").textContent=lvl;
+    var diag=score>=80?"لوحتك تطلّعك من المقارنة. التحدي الحين هو التنفيذ بنفس الوضوح، أسبوع ورا أسبوع."
+      :score>=60?"عندك اتجاه واضح. اللي ناقص إنك تحوّل بصمتك لشي يحسّه العميل كل مرة يتعامل معك."
+      :score>=40?"بديت تشوف وين الهدر، بس ميزتك لسا مو واضحة كفاية عشان تطلّعك من المقارنة."
+      :"مشروعك لسا يلعب نفس لعبة السوق. الخطوة الأولى مو إنك تشتغل أكثر، إنك توقف اللي يستنزفك.";
+    // وش تحتاج
+    var out=[];
+    if(open.length){out.push(["fix","!","لسا تنافس على "+open.join("، "),"قلت إن سوقك يتنافس على <b>"+esc(open.join("، "))+"</b>، وما حطيتها في «الحمل الزايد» ولا «الجهد المهدور». يعني بتظل تتعب في نفس السباق اللي يتعب فيه الكل. قرّر فيها: تشيلها، أو تخففها لمستوى «يكفي»، أو تعرف ليش تبيها."])}
+    else if(race.length){out.push(["good","✓","طلعت من سباق المنافسين","كل عامل يتنافس عليه سوقك ("+esc(race.join("، "))+") شلته أو خففته. هذا أصعب قرار في اللوحة، وأنت سويته."])}
+    if(cut.length>add.length+2){out.push(["fix","!","تشيل أكثر مما تضيف","شلت وخففت "+cut.length+" أشياء، وقوّيت وأضفت "+add.length+" بس. لو وقفت هنا، مشروعك بيصير أقل تكلفة… بس مو أكثر تميّز. تحتاج الاثنين مع بعض."])}
+    else if(add.length>cut.length+2){out.push(["fix","!","تضيف بدون ما تشيل","أضفت "+add.length+" أشياء وشلت "+cut.length+" بس. كل إضافة لها تكلفة. بدون ما تشيل وتخفف، بتزيد مصاريفك وتعبك. شيل شي مقابل كل شي تضيفه."])}
+    else if(cut.length&&add.length){out.push(["good","✓","لوحتك متوازنة","شلت "+cut.length+" وأضفت "+add.length+". هذا التوازن اللي يخليك متميز وبتكلفة أقل في نفس الوقت."])}
+    if(C.length&&!own.length){out.push(["fix","!","بصمتك تحتاج كلامك أنت","كل اللي في «البصمة» من الاقتراحات الجاهزة. الاقتراحات تفتح لك الفكرة، بس الشي اللي محد يقدر ينسخه لازم يكون من قصتك أنت. اكتبه بكلماتك وبتفاصيل مشروعك."])}
+    var gap=(out.filter(function(o){return o[0]==="fix"})[0]||[])[2]||"ما فيه فجوة واضحة";
+    if(quiet)return {score:score,lvl:lvl,gap:gap,first:strip(week1(ctx0()).days[1].t)};
+    $("sc").textContent=score;$("sc-lvl").textContent=lvl;$("diag").textContent=diag;
     setTimeout(function(){$("sc-bar").style.width=score+"%"},60);
-    $("sc-parts").innerHTML=[["تعاملت مع عوامل المنافسة",p1,30],["التوازن بين الشيل والإضافة",p2,25],["قوة خانة «أنشئ»",p3,25],["وضوح إجاباتك",p4,20]]
+    $("sc-parts").innerHTML=[["تعاملت مع عوامل المنافسة",p1,30],["التوازن بين الشيل والإضافة",p2,25],["قوة بصمتك",p3,25],["وضوح إجاباتك",p4,20]]
       .map(function(x){return "<li><span>"+x[0]+"</span><b>"+x[1]+"/"+x[2]+"</b></li>"}).join("");
 
     // منحنى القيمة
@@ -533,19 +617,108 @@ footer a.h{font-size:14px;color:var(--on-plum-soft);text-decoration:none}
     if(F.length<2)F=[["السعر",8,4],["القصة",3,9]];
     drawVC(F);
 
-    // الرؤى
-    var out=[];
-    if(open.length){out.push(["fix","!","لسا تنافس على "+open.join("، "),"قلت إن سوقك يتنافس على <b>"+esc(open.join("، "))+"</b>، وما مسحتها ولا قلّلتها. يعني بتظل تتعب في نفس السباق اللي يتعب فيه الكل. قرّر فيها: تمسحها، أو تقلّلها لمستوى «كافي»، أو تعرف ليش تبيها."])}
-    else if(race.length){out.push(["good","✓","طلعت من سباق المنافسين","كل عامل يتنافس عليه سوقك ("+esc(race.join("، "))+") مسحته أو قلّلته. هذا أصعب قرار في اللوحة، وأنت سويته."])}
-    if(cut.length>add.length+2){out.push(["fix","!","تشيل أكثر مما تضيف","مسحت وقلّلت "+cut.length+" أشياء، ورفعت وأنشأت "+add.length+" بس. لو وقفت هنا، مشروعك بيصير أرخص تكلفة… بس مو أكثر تميّز. المحيط الأزرق يحتاج الاثنين مع بعض."])}
-    else if(add.length>cut.length+2){out.push(["fix","!","تضيف بدون ما تشيل","أضفت "+add.length+" أشياء وشلت "+cut.length+" بس. كل إضافة لها تكلفة. بدون ما تمسح وتقلّل، بتزيد مصاريفك وتعبك. شيل شي مقابل كل شي تضيفه."])}
-    else if(cut.length&&add.length){out.push(["good","✓","لوحتك متوازنة","شلت "+cut.length+" وأضفت "+add.length+". هذا التوازن اللي يخليك متميز وبتكلفة أقل في نفس الوقت."])}
-    if(C.length&&!own.length){out.push(["fix","!","خانة «أنشئ» تحتاج بصمتك","كل اللي في «أنشئ» من الاقتراحات الجاهزة. الاقتراحات تفتح لك الفكرة، بس الشي اللي محد يقدر ينسخه لازم يكون من قصتك أنت. اكتبه بكلماتك وبتفاصيل مشروعك."])}
-    var key=own[0]||C[0];
-    if(key){out.push(["key","★","قرارك الأول هالأسبوع","ابدأ بـ <b>«"+esc(key)+"»</b>. هذا الشي اللي يخليك خارج المقارنة. حوّله لخطوة وحدة تقدر تبدأها خلال 7 أيام، وخلّ كل الباقي يخدمه."])}
     $("ins-list").innerHTML=out.slice(0,4).map(function(o){return '<div class="ins '+o[0]+'"><div class="t"><span>'+o[1]+'</span>'+esc(o[2])+'</div><p>'+o[3]+'</p></div>'}).join("");
     return {score:score};
   }
+
+  /* ===== الخطط: الأسبوع 1 من إجاباته، والأسبوع 2 خطة نشر أو خطة تسويق حسب إنجازه ===== */
+  var DKEY="mamer-explore-done",LASTW2=null,DONE={};
+  try{DONE=JSON.parse(localStorage.getItem(DKEY)||"{}")}catch(e){DONE={}}
+  function saveDone(){try{localStorage.setItem(DKEY,JSON.stringify(DONE))}catch(e){}}
+  function strip(h){var d=document.createElement("div");d.innerHTML=h;return d.textContent}
+  function q(t){return "<b>«"+esc(t)+"»</b>"}
+  function g(t,fb){return t?"«"+t+"»":fb}
+  function ctx0(){
+    var race=lines("race"),E=lines("e"),R=lines("r"),RA=lines("ra"),C=lines("c"),cut=E.concat(R);
+    var open=race.filter(function(f){var keys=MAP[f]||[f.split(" ")[0]];return !has(cut,keys)});
+    var own=C.filter(function(t){return SUGG.indexOf(t)<0});
+    return {N:$("name").value.trim()||"مشروعنا",W:$("what").value.trim(),E:E,R:R,race:race,open:open,P:RA[0],P2:RA[1],M:own[0]||C[0]};
+  }
+  var PUB=["انشره في الوقت اللي يتفاعل فيه جمهورك أكثر.","رد على كل تعليق ورسالة خلال ساعة."];
+
+  function week1(k){
+    var E0=k.E[0],R0=k.R[0],P=k.P,M=k.M,d=[];
+    d.push({d:"اليوم 1",t:"جرد أسبوعك",s:["اكتب كل شي سويته في مشروعك آخر 7 أيام: منشورات، إعلانات، عروض، ردود، توصيل…","جنب كل شي: كم ساعة أخذ منك، وكم ريال صرفت عليه.","علّم على كل شي ما جاب لك عميل ولا رسالة ولا سؤال."],
+      aid:{h:"جدول الجرد جاهز، انسخه وعبّه",x:["الشي | الساعات | الريالات | جاب نتيجة؟"].concat(k.E.concat(k.R).slice(0,4).map(function(t){return t+" |  |  | "})).concat(["… |  |  | "]).join("\n")}});
+    d.push({d:"اليوم 2",t:E0?"أوقف "+q(E0):"أوقف أول حمل زايد",s:[E0?"وقّف "+q(E0)+" من اليوم، بدون إعلان ولا اعتذار.":"اختر شي واحد من جرد اليوم 1 يسويه الكل وعميلك ما يسأل عنه، ووقّفه من اليوم.","اكتب جنبه في الجرد: كم ساعة وكم ريال بيتوفر لك في الأسبوع.","لو سألك عميل عنه، رد بالجملة الجاهزة تحت."],
+      aid:{h:"ردك الجاهز لو سأل عميل",x:"صرنا نركّز على "+g(P,"اللي يفرق معك فعلًا")+" عشان نعطيك تجربة أفضل، فوقفنا "+g(E0,"بعض الأشياء اللي ما كانت تضيف لك")+"."}});
+    d.push({d:"اليوم 3",t:R0?"خفّف "+q(R0):"خفّف أكثر جهد مهدور",s:[(R0?"حدّد الحد الجديد لـ"+q(R0):"اختر أكثر شي ياخذ وقتك بدون نتيجة، وحدّد له حد")+": كم مرة، أو كم ساعة، أو كم ريال في الأسبوع.","حط الحد في تقويمك أو منبه جوالك.","أي شي يتعدى الحد، أجّله للأسبوع الجاي بدل ما تسويه."],
+      aid:{h:"قاعدتك الجديدة، اكتبها وعلّقها قدامك",x:"من اليوم: "+(R0||"___")+" بحد أقصى ___ في الأسبوع.\nوأي زيادة تتأجل للأسبوع الجاي."}});
+    if(k.open.length){var O=k.open[0];
+      d.push({d:"اليوم 4",t:"حدّد «يكفي» في "+q(O),s:["شوف وش يقدّم أقوى 3 منافسين في "+q(O)+"، واكتبه في سطر.","قرّر مستواك اللي «يكفي» بدون ما تلحقهم، واكتبه.","جهّز ردك لو عميل قارنك فيه."],
+        aid:{h:"ردك الجاهز لو عميل قارنك",x:"صحيح فيه خيارات ثانية في "+O+"، بس اللي عندنا "+g(P,"شي ما بتلقاه عند غيرنا")+(M?"، و«"+M+"»":"")+". وهذا اللي يخلي عملاءنا يرجعون لنا."}});
+    }else{var X=k.E[1]?["أوقف",k.E[1],"2"]:k.R[1]?["خفّف",k.R[1],"3"]:null;
+      if(X)d.push({d:"اليوم 4",t:X[0]+" "+q(X[1]),s:[X[0]+" "+q(X[1])+" بنفس طريقة اليوم "+X[2]+".","اكتب كم وفّرت منه.","راقب ردود عملائك: هل أحد لاحظ؟"],aid:{h:"سجل الملاحظة",x:X[0]+": "+X[1]+"\nوفّرت: ___ ساعة و___ ريال\nهل لاحظ عميل؟ ___"}});
+      else d.push({d:"اليوم 4",t:"راقب أثر اللي وقفته",s:["راجع رسائل وتعليقات عملائك من اليوم 2.","هل أحد لاحظ اللي وقفته أو خففته؟ اكتب ملاحظتك.","إذا ما لاحظ أحد، هذا دليل إنه كان حمل زايد فعلًا."],aid:{h:"سجل الملاحظة",x:"اللي وقفته: ___\nكم عميل لاحظ: ___\nوش قالوا: ___"}});
+    }
+    d.push({d:"اليوم 5–6",t:P?"حط الوقت في "+q(P):"حط الوقت في نقطة قوتك",s:["احجز الساعات اللي وفّرتها في تقويمك باسم "+(P?q(P):"نقطة قوتك")+".","سوّ تحسين واحد ملموس فيها يحسّه العميل.","صوّر أو وثّق التحسين، بتحتاجه في الأسبوع الثاني."],
+      aid:{h:"أسئلة تساعدك تختار التحسين",x:"• وش أكثر شي يمدحني عليه العميل؟\n• وش الشي اللي يتمناه العميل وما لقاه عند غيري؟\n• لو أضيف شي واحد بس في "+(P||"نقطة قوتي")+"، وش بيكون؟"}});
+    d.push({d:"اليوم 7",t:"حسبة الأسبوع",s:["قارن بجرد اليوم 1.","اكتب كم ساعة وكم ريال وفّرت.","اكتب جملة وحدة: وش لاحظت؟"],
+      aid:{h:"قالب المراجعة، انسخه وعبّه",x:"وفّرت هالأسبوع: ___ ساعة و___ ريال.\nوقفت: "+(E0||"___")+"\nخففت: "+(R0||"___")+"\nحطيت الوقت في: "+(P||"___")+"\nلاحظت: ___"}});
+    return {n:1,key:"w1",tag:"الأسبوع 1",stage:"إعادة توزيع الجهد",title:"وقّف اللي يستنزفك",goal:"هدف الأسبوع: توفّر وقت وفلوس من الأشياء اللي ما يدفع العميل عشانها.",days:d};
+  }
+
+  function weekPM(k){
+    var E0=k.E[0],R0=k.R[0],P=k.P,P2=k.P2,M=k.M,N=k.N,W=k.W,d=[];
+    var vs=k.open[0]||k.race[0];
+    var changed=E0?"ليش وقفت "+q(E0):R0?"ليش خففت "+q(R0):"وش غيّرت في أسبوعك الأول";
+    var hook=E0?"وقفنا «"+E0+"»… وهذا أحسن قرار سويناه لعملائنا.":R0?"خففنا «"+R0+"»… وهذا اللي صار.":"غيّرنا شي واحد في "+N+"… وهذا اللي صار.";
+    d.push({d:"اليوم 1",t:"ريل: "+changed,s:["انشر ريل قصير (30–45 ثانية) تحكي فيه "+changed+"، ووش بيستفيد العميل.","افتح بالجملة الجاهزة في أول 3 ثواني.","تسويق: رد على كل تعليق ورسالة خلال ساعة، وادعُ اللي يسأل يجرّب."],
+      aid:{h:"أول جملة في الريل",x:hook}});
+    d.push({d:"اليوم 2",t:"كاروسيل: كيف نسوي "+q(P),s:["انشر كاروسيل 5 شرائح يشرح "+q(P)+" من الكواليس.","استخدم صور التحسين اللي وثّقته في الأسبوع الأول.","تسويق: اكتب قائمة 20 شخص: 10 عملاء سابقين، و10 متابعين تفاعلوا معك آخر شهر."],
+      aid:{h:"عناوين الشرائح + جدول القائمة",x:"عناوين الشرائح:\n1) كيف نسوي «"+P+"» في "+N+"\n2) المشكلة اللي كان يواجهها العميل\n3) وش غيّرنا\n4) كيف صارت التجربة الحين\n5) جرّبها بنفسك، راسلنا\n\nجدول القائمة:\nالاسم | عميل سابق أو متابع | آخر تفاعل | أرسلت؟\n… |  |  | "}});
+    d.push({d:"اليوم 3",t:"ستوري: استفتاء",s:["نزّل استفتاء من خيارين عن اللي يهم عميلك.","رد على كل واحد صوّت برسالة شكر قصيرة.","تسويق: أرسل الرسالة الجاهزة لأول 10 من قائمتك."],
+      aid:{h:"نص الاستفتاء + رسالتك الجاهزة",x:"الاستفتاء:\nوش أهم شي عندك لما تختار"+(W?" ("+W+")":"")+"؟\n- "+P+"\n- "+(vs||"___ (اكتب الخيار الثاني)")+"\n\nالرسالة:\nهلا [الاسم]، تذكرتك لأنك [آخر تفاعل]. هالأسبوع بدينا نقدّم «"+M+"»"+(W?" لـ"+W:"")+"، وحبيت تكون من أول الناس يجربونه. يناسبك أرسل لك التفاصيل؟"}});
+    d.push({d:"اليوم 4",t:"ريل: أول مرة "+q(M),s:["اعرض "+q(M)+" لأول مرة: وش هو ولمين.","صوّره وهو يصير فعلًا، مو كلام بس.","تسويق: ثبّت الريل أعلى حسابك، ورد على كل «أبي» بالتفاصيل."],
+      aid:{h:"سكربت 3 أسطر + ردك على «أبي»",x:"السكربت:\nالبداية: ما في أحد يقدّم «"+M+"»… إلا إحنا.\nالوسط: وش هو، وليش سويناه، ولمين.\nالنهاية: علّق بكلمة «أبي» وأرسل لك التفاصيل.\n\nردك على «أبي»:\nهلا! «"+M+"» هو ___، ويناسبك لأن ___. تبي أحجز لك؟"}});
+    d.push({d:"اليوم 5",t:"منشور: صوت العميل",s:["تسويق: اطلب رأي 3 عملاء بالرسالة الجاهزة.","انشر أقوى رأي بكلامه حرفيًا، وبإذنه."],
+      aid:{h:"رسالة طلب الرأي",x:"هلا [الاسم]، شكرًا إنك اخترت "+N+". سؤال سريع: وش الشي اللي خلاك تختارنا بدل غيرنا؟ ولو تسمح لي أنشر ردك."}});
+    d.push({d:"اليوم 6",t:"ستوري: كواليس "+q(P2||P),s:["نزّل 3 ستوريات من يومك وأنت تشتغل على "+q(P2||P)+".","آخر ستوري: سؤال مفتوح للمتابعين.","تسويق: اختر مشروع يخدم نفس عميلك وما ينافسك، وأرسل له رسالة الشراكة."],
+      aid:{h:"سؤال الستوري + رسالة الشراكة",x:"سؤال آخر ستوري:\nلو تقدر تغيّر شي واحد في "+(W||"هالمجال")+"، وش بيكون؟\n\nرسالة الشراكة:\nهلا، أنا من "+N+". عملاؤكم وعملاؤنا تقريبًا نفس الناس. وش رايكم نعطي عملاءكم [هدية أو ميزة] منّا، وتعطون عملاءنا [هدية أو ميزة] منكم؟"}});
+    d.push({d:"اليوم 7",t:"منشور: الخلاصة والدعوة",s:["انشر منشور يجمع أسبوعك: وش غيّرت، ووش قال العملاء، ودعوة وحدة بس.","تسويق: أرسل الرسالة لباقي قائمتك (العشرة الثانية).","احسب: كم رسالة أرسلت، وكم رد، وكم بيعة، ومن أي قناة."],
+      aid:{h:"الكابشن + جدول القياس",x:"الكابشن:\nهالأسبوع غيّرنا "+(E0?"شي كبير: وقفنا «"+E0+"»":R0?"طريقتنا: خففنا «"+R0+"»":"طريقتنا")+"، وحطينا وقتنا في «"+P+"».\nوبدينا نقدّم «"+M+"»، وهذا شي ما بتلقاه عند غيرنا.\nتبي تجربه؟ أرسل لنا كلمة «أبي».\n\nجدول القياس:\nرسائل أرسلتها: ___\nردود: ___\nمبيعات: ___\nأفضل قناة: ___\nبكرر الأسبوع الجاي: ___"}});
+    return {n:2,key:"w2",tag:"الأسبوع 2",stage:"خطة النشر والتسويق",title:"خلّ الناس يشوفون الفرق ويجون لك",goal:"هدف الأسبوع: كل يوم منشور يوضّح وش غيّرت ووش يميزك، ومعه خطوة توصّلك لعملاء بشكل مباشر.",days:d};
+  }
+  function renderWeek(P){
+    var h='<div class="wk"><b>'+P.tag+'</b><span>'+P.stage+'</span></div><h3>'+P.title+'</h3><p class="goal">'+P.goal+'</p>'+(P.note?'<p class="wnote">'+P.note+'</p>':'')+
+      (P.n===1?'<div class="wprog"><div class="bar2"><i id="wbar"></i></div><span id="wcount"></span></div>':'')+'<ol class="days">';
+    P.days.forEach(function(d,i){
+      h+='<li><span class="d">'+d.d+'</span><div class="db"><h4>'+d.t+'</h4><ul class="checks">';
+      d.s.forEach(function(st,j){var id=P.key+"-"+i+"-"+j;h+='<li><label><input type="checkbox" data-id="'+id+'"'+(DONE[id]?" checked":"")+'><span>'+st+'</span></label></li>'});
+      h+='</ul>';
+      if(d.aid)h+='<details class="aid"><summary>الأداة تساعدك: '+esc(d.aid.h)+'</summary><pre>'+esc(d.aid.x)+'</pre><button type="button" class="btn btn-ghost cp">انسخ</button></details>';
+      h+='</div></li>';
+    });
+    $("w"+P.n).innerHTML=h+'</ol>';
+    if(P.n===1)updProg();
+  }
+  function w1state(){var c=[].slice.call(document.querySelectorAll('#w1 input[type=checkbox]'));return {all:c.length,done:c.filter(function(x){return x.checked}).length}}
+  function updProg(){
+    var st=w1state();if(!$("wbar"))return;
+    $("wbar").style.width=(st.all?Math.round(100*st.done/st.all):0)+"%";
+    $("wcount").textContent="خلّصت "+st.done+" من "+st.all+" خطوة"+(st.all&&st.done===st.all?" ✓":"");
+  }
+  $("plan").addEventListener("change",function(ev){
+    var c=ev.target;if(!c.matches||!c.matches('input[type=checkbox]'))return;
+    DONE[c.dataset.id]=c.checked;if(!c.checked)delete DONE[c.dataset.id];saveDone();
+    if(c.dataset.id.indexOf("w1-")===0)updProg();
+  });
+  $("plan").addEventListener("click",function(ev){
+    var b=ev.target.closest&&ev.target.closest(".cp");if(!b)return;
+    var t=b.parentNode.querySelector("pre").textContent;
+    var ok=function(){b.textContent="اننسخ ✓";setTimeout(function(){b.textContent="انسخ"},1800)};
+    try{navigator.clipboard.writeText(t).then(ok,function(){b.textContent="حدّد النص وانسخه"})}catch(e){b.textContent="حدّد النص وانسخه"}
+  });
+  $("gen2").addEventListener("click",function(){
+    var b=this;b.disabled=true;b.textContent="أجهّز خطة أسبوعك الثاني…";
+    setTimeout(function(){
+      var st=w1state(),P=weekPM(ctx0());
+      P.note="تكمل على أسبوعك الأول: خلّصت "+st.done+" من "+st.all+" خطوة."+(st.done<st.all?" كمّل الباقي جنب خطة هالأسبوع.":" ✓");
+      LASTW2=P;renderWeek(P);var w=$("w2");w.hidden=false;w.classList.remove("new");void w.offsetWidth;w.classList.add("new");
+      $("more").hidden=true;b.disabled=false;b.textContent="ولّد خطة الأسبوع الثاني ←";
+      $("cta-month").hidden=false;w.scrollIntoView({behavior:"smooth",block:"start"});
+    },700);
+  });
   function drawVC(F){
     var W=560,H=300,L=24,Rr=W-24,T=24,B=H-70,n=F.length,ns="http://www.w3.org/2000/svg",svg=$("vc");svg.innerHTML="";
     function el(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
